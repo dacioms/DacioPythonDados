@@ -10,7 +10,10 @@
         },
         {
             "nome": "Maria",
-            "idade": 35
+            "idade": [
+                35,
+                11
+            ]
         },
         {
             "nome": "Pedro",
