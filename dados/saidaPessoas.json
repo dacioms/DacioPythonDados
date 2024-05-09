@@ -2,7 +2,7 @@
     "empregados": [
         {
             "nome": "Jo\u00e3o",
-            "idade": 30
+            "idade": true
         },
         {
             "nome": "Ana",
