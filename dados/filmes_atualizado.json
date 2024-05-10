@@ -1,0 +1,20 @@
+[
+    {
+        "Titulo":"Matrix",
+        "Genero":"Ficcao Cientifica",
+        "Ano":1999,
+        "Duracao":136
+    },
+    {
+        "Titulo":"Clube da Luta",
+        "Genero":"Drama",
+        "Ano":1999,
+        "Duracao":139
+    },
+    {
+        "Titulo":"A Origem",
+        "Genero":"Ficcao Cientifica",
+        "Ano":2010,
+        "Duracao":148
+    }
+]
