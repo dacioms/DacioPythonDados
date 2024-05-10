@@ -1,0 +1,1913 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Introdução ao Pandas e manipulação de arquivos com Pandas\n",
+    "\n",
+    "- Introdução ao Pandas\n",
+    "    - Conceitos Básicos de Pandas\n",
+    "      - Estruturas de dados: Series e DataFrames\n",
+    "      - Criação de Series e DataFrames a partir de listas e dicionários\n",
+    "      - Visualização de dados: cabeçalho, cauda e informações básicas\n",
+    "- Manipulação de Dados com Pandas\n",
+    "    - Carregamento de Dados\n",
+    "      - Leitura de dados de diferentes fontes (CSV, Excel, SQL) \n",
+    "      - Visualização inicial e sumário estatístico\n",
+    "    - Limpeza e Preparação de Dados\n",
+    "      - Tratamento de valores ausentes\n",
+    "      - Remoção de duplicatas\n",
+    "      - Filtragem de dados  \n",
+    "    - Transformação de Dados\n",
+    "      - Operações com colunas (adicionar, remover, modificar)\n",
+    "      - Funções de mapeamento\n",
+    "      - Agrupamento e agregação\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Objetivo\n",
+    "- Fornecer uma compreensão abrangente da biblioteca Pandas, uma ferramenta essencial no Python para análise de dados. Ao final do curso, você será capaz de manipular, limpar e explorar conjuntos de dados de forma eficiente. Estaremos cobrindo desde a configuração do ambiente de desenvolvimento até a realização de análises de dados complexas e visualização de dados."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Visão Geral do Pandas e sua Importância\n",
+    "- Pandas é uma biblioteca de código aberto que fornece estruturas de dados de alto desempenho e ferramentas de análise de dados para a linguagem Python. \n",
+    "- Com Pandas, você pode realizar tarefas essenciais de __pré-processamento__ e __análise de dados__, como a __limpeza de dados__, transformações, agregações, e muito mais. \n",
+    "- A biblioteca é amplamente utilizada em diversas áreas, incluindo finanças, neurociência, economia, estatística, publicidade e web analytics."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exemplo de Implementação Inicial com Pandas:\n",
+    "- Vamos começar com um exemplo simples para demonstrar como iniciar com o Pandas. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "metadata": {}
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "    Nome  Idade          Cidade\n",
+      "0   João     28       São Paulo\n",
+      "1    Ana     34  Rio de Janeiro\n",
+      "2  Pedro     29  Belo Horizonte\n",
+      "3  Maria     32    Porto Alegre \n",
+      " __________________________________________________ \n",
+      "\n"
+     ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Nome</th>\n",
+       "      <th>Idade</th>\n",
+       "      <th>Cidade</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>João</td>\n",
+       "      <td>28</td>\n",
+       "      <td>São Paulo</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>Ana</td>\n",
+       "      <td>34</td>\n",
+       "      <td>Rio de Janeiro</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>Pedro</td>\n",
+       "      <td>29</td>\n",
+       "      <td>Belo Horizonte</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>Maria</td>\n",
+       "      <td>32</td>\n",
+       "      <td>Porto Alegre</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "    Nome  Idade          Cidade\n",
+       "0   João     28       São Paulo\n",
+       "1    Ana     34  Rio de Janeiro\n",
+       "2  Pedro     29  Belo Horizonte\n",
+       "3  Maria     32    Porto Alegre"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "\n",
+    "# Criando um DataFrame simples\n",
+    "data = {\n",
+    "    'Nome': ['João', 'Ana', 'Pedro', 'Maria'],\n",
+    "    'Idade': [28, 34, 29, 32],\n",
+    "    'Cidade': ['São Paulo', 'Rio de Janeiro', 'Belo Horizonte', 'Porto Alegre']\n",
+    "}\n",
+    "\n",
+    "df = pd.DataFrame(data)\n",
+    "\n",
+    "print(df, \"\\n\", \"_\"*50, \"\\n\")\n",
+    "\n",
+    "# Em notebooks o que é retornado da célula é renderizado (exibido) na saída da célula de código, não exigindo a função print\n",
+    "df\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Cria um DataFrame, que é uma das principais estruturas de dados do Pandas. \n",
+    "\n",
+    "Um DataFrame é semelhante a uma tabela de banco de dados ou uma planilha de Excel, com linhas e colunas. \n",
+    "\n",
+    "No exemplo acima, criamos um DataFrame a partir de um dicionário de listas, uma estrutura de dados muito comum em Python."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Séries e DataFrames\n",
+    "- Series: Uma Series é uma coluna unidimensional capaz de armazenar qualquer tipo de dados (inteiros, strings, floats, objetos Python, etc.). Cada elemento de uma Series é indexado, começando por padrão do índice 0."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "metadata": {}
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0    25\n",
+      "1    30\n",
+      "2    35\n",
+      "3    40\n",
+      "dtype: int64\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "\n",
+    "# Criando uma Series a partir de uma lista\n",
+    "idades = pd.Series([25, 30, 35, 40])\n",
+    "print(idades)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- DataFrames: Um DataFrame é uma estrutura de dados bidimensional, como uma planilha ou uma tabela de banco de dados, com colunas de diferentes tipos. Pode ser visto como um conjunto de Series que compartilham o mesmo índice."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Nome</th>\n",
+       "      <th>Idade</th>\n",
+       "      <th>Cidade</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>Ana</td>\n",
+       "      <td>28</td>\n",
+       "      <td>São Paulo</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>Bruno</td>\n",
+       "      <td>34</td>\n",
+       "      <td>Rio de Janeiro</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>Carlos</td>\n",
+       "      <td>29</td>\n",
+       "      <td>Belo Horizonte</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>Diana</td>\n",
+       "      <td>32</td>\n",
+       "      <td>Porto Alegre</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>Fernando</td>\n",
+       "      <td>45</td>\n",
+       "      <td>Brasília</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "       Nome  Idade          Cidade\n",
+       "0       Ana     28       São Paulo\n",
+       "1     Bruno     34  Rio de Janeiro\n",
+       "2    Carlos     29  Belo Horizonte\n",
+       "3     Diana     32    Porto Alegre\n",
+       "4  Fernando     45        Brasília"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Criando um DataFrame a partir de um dicionário de listas\n",
+    "data = {\n",
+    "    'Nome': ['Ana', 'Bruno', 'Carlos', 'Diana','Fernando'],\n",
+    "    'Idade': [28, 34, 29, 32, 45],\n",
+    "    'Cidade': ['São Paulo', 'Rio de Janeiro', 'Belo Horizonte', 'Porto Alegre', 'Brasília']\n",
+    "}\n",
+    "df = pd.DataFrame(data)\n",
+    "df\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Criação de Series e DataFrames\n",
+    "- A partir de __listas__: Podemos criar uma Series diretamente de uma lista. Para criar um DataFrame a partir de listas, podemos combinar várias listas em um dicionário, onde cada chave se torna o nome da coluna.\n",
+    "- A partir de __dicionários__: Um DataFrame também pode ser criado a partir de um dicionário de listas ou de Series, proporcionando uma forma intuitiva de especificar dados junto com seus rótulos de coluna."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Visualização de Dados\n",
+    "- Pandas oferece métodos simples para uma rápida inspeção dos seus dados.\n",
+    "- Ferramentas cruciais para uma primeira análise exploratória dos dados, permitindo uma visão geral rápida e eficiente da estrutura e conteúdo do seu conjunto de dados.\n",
+    "\n",
+    "Métodos <code>.head() e .tail()</code>: Use df.head(n) para visualizar as primeiras n linhas do DataFrame df, e df.tail(n) para as últimas n. Se n não for especificado, o padrão é 5."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {
+    "metadata": {}
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "       Nome  Idade          Cidade\n",
+      "0       Ana     28       São Paulo\n",
+      "1     Bruno     34  Rio de Janeiro\n",
+      "2    Carlos     29  Belo Horizonte\n",
+      "3     Diana     32    Porto Alegre\n",
+      "4  Fernando     45        Brasília\n",
+      "********************************************************************************\n",
+      "       Nome  Idade          Cidade\n",
+      "7     Pedro     29  Belo Horizonte\n",
+      "8     Maria     32    Porto Alegre\n",
+      "9     Alice     25        New York\n",
+      "10      Bob     30           Paris\n",
+      "11  Charlie     35          London\n"
+     ]
+    }
+   ],
+   "source": [
+    "data = {\n",
+    "    'Nome': ['Ana', 'Bruno', 'Carlos', 'Diana','Fernando','João', 'Ana', 'Pedro', 'Maria', 'Alice', 'Bob', 'Charlie'],\n",
+    "    'Idade': [28, 34, 29, 32, 45, 28, 34, 29, 32,25, 30, 35],\n",
+    "    'Cidade': ['São Paulo', 'Rio de Janeiro', 'Belo Horizonte', 'Porto Alegre', 'Brasília','São Paulo', 'Rio de Janeiro', 'Belo Horizonte', 'Porto Alegre', 'New York', 'Paris', 'London']\n",
+    "}\n",
+    "df = pd.DataFrame(data)\n",
+    "\n",
+    "print(df.head())  # Mostra as primeiras 5 linhas\n",
+    "\n",
+    "print('*'*80)\n",
+    "\n",
+    "print(df.tail()) \n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- Operações básicas de manipulação de dados com Pandas, como seleção de colunas, filtragem de linhas, e cálculos simples (médias, somas)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {
+    "metadata": {}
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0          Ana\n",
+      "1        Bruno\n",
+      "2       Carlos\n",
+      "3        Diana\n",
+      "4     Fernando\n",
+      "5         João\n",
+      "6          Ana\n",
+      "7        Pedro\n",
+      "8        Maria\n",
+      "9        Alice\n",
+      "10         Bob\n",
+      "11     Charlie\n",
+      "Name: Nome, dtype: object\n",
+      "        Nome  Idade          Cidade\n",
+      "0        Ana     28       São Paulo\n",
+      "1      Bruno     34  Rio de Janeiro\n",
+      "2     Carlos     29  Belo Horizonte\n",
+      "3      Diana     32    Porto Alegre\n",
+      "4   Fernando     45        Brasília\n",
+      "5       João     28       São Paulo\n",
+      "6        Ana     34  Rio de Janeiro\n",
+      "7      Pedro     29  Belo Horizonte\n",
+      "8      Maria     32    Porto Alegre\n",
+      "9      Alice     25        New York\n",
+      "10       Bob     30           Paris\n",
+      "11   Charlie     35          London\n",
+      "31.75\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "# Seleção de colunas\n",
+    "print(df['Nome'])\n",
+    "\n",
+    "# Filtragem de linhas\n",
+    "print(df[df['Idade'] > 18])\n",
+    "\n",
+    "# Cálculos simples\n",
+    "print(df['Idade'].mean())\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<code>.info()</code>: Este método fornece um resumo conciso do DataFrame, incluindo o número de entradas não-nulas em cada coluna, o tipo de dados e o uso de memória."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {
+    "metadata": {}
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'pandas.core.frame.DataFrame'>\n",
+      "RangeIndex: 12 entries, 0 to 11\n",
+      "Data columns (total 3 columns):\n",
+      " #   Column  Non-Null Count  Dtype \n",
+      "---  ------  --------------  ----- \n",
+      " 0   Nome    12 non-null     object\n",
+      " 1   Idade   12 non-null     int64 \n",
+      " 2   Cidade  12 non-null     object\n",
+      "dtypes: int64(1), object(2)\n",
+      "memory usage: 420.0+ bytes\n"
+     ]
+    }
+   ],
+   "source": [
+    "df.info()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<code>.describe()</code>: Oferece uma visão geral estatística das colunas numéricas, como contagem, média, desvio padrão, mínimos e máximos."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {
+    "metadata": {}
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Idade</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>count</th>\n",
+       "      <td>12.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>mean</th>\n",
+       "      <td>31.750000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>std</th>\n",
+       "      <td>5.119038</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>min</th>\n",
+       "      <td>25.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>25%</th>\n",
+       "      <td>28.750000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>50%</th>\n",
+       "      <td>31.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>75%</th>\n",
+       "      <td>34.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>max</th>\n",
+       "      <td>45.000000</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "           Idade\n",
+       "count  12.000000\n",
+       "mean   31.750000\n",
+       "std     5.119038\n",
+       "min    25.000000\n",
+       "25%    28.750000\n",
+       "50%    31.000000\n",
+       "75%    34.000000\n",
+       "max    45.000000"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.describe()\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Limpeza de Dados\n",
+    "\n",
+    "A limpeza de dados é uma parte crítica da análise de dados. Pandas oferece várias funções para facilitar este processo."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {
+    "metadata": {}
+   },
+   "outputs": [],
+   "source": [
+    "# Removendo linhas com valores ausentes\n",
+    "df_limpo = df.dropna()\n",
+    "\n",
+    "# Preenchendo valores ausentes com zero\n",
+    "df_preenchido = df.fillna(0)\n",
+    "\n",
+    "# Removendo duplicatas\n",
+    "df_unico = df.drop_duplicates()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Leitura de Dados de Diferentes Fontes\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Arquivos CSV\n",
+    " Arquivos CSV (Valores Separados por Vírgula) são uma das formas mais comuns de armazenamento de dados tabulares. \n",
+    " \n",
+    " Utilizar a biblioteca Pandas para ler, escrever e manipular dados em arquivos CSV de maneira eficiente, aproveitando as funcionalidades avancadas para analise de dados.\n",
+    " \n",
+    " Função pd.read_csv() para carregar dados de um arquivo CSV diretamente para um DataFrame, permitindo uma manipulação fácil e flexível dos dados.\n",
+    "\n",
+    " - Parâmetros úteis como sep para delimitadores customizados e usecols para selecionar colunas específicas."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {
+    "metadata": {}
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'pandas.core.frame.DataFrame'>\n",
+      "RangeIndex: 30 entries, 0 to 29\n",
+      "Data columns (total 4 columns):\n",
+      " #   Column      Non-Null Count  Dtype  \n",
+      "---  ------      --------------  -----  \n",
+      " 0   Produto     30 non-null     object \n",
+      " 1   Preço       30 non-null     float64\n",
+      " 2   Quantidade  30 non-null     int64  \n",
+      " 3   Data        30 non-null     object \n",
+      "dtypes: float64(1), int64(1), object(2)\n",
+      "memory usage: 1.1+ KB\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "import pandas as pd\n",
+    "\n",
+    "# Carregando dados de um arquivo CSV\n",
+    "df_csv = pd.read_csv('dadosFictícios/Exemplo_Aula_8.csv')\n",
+    "df_csv.info()\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "# Exemplo: Leitura de um arquivo CSV com Pandas\n",
+    "df = pd.read_csv('dados/usuarios.csv')\n",
+    "print(df.head())  # Mostra as primeiras 5 linhas do DataFrame"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Escrita para CSV:\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {
+    "metadata": {}
+   },
+   "outputs": [],
+   "source": [
+    "df.to_csv('dados/saida_pandas.csv', index=False)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Exportar um DataFrame para um arquivo CSV usando o método to_csv(), permitindo salvar os resultados de análises e manipulações dos dados.\n",
+    "\n",
+    "- Argumento index=False para evitar a escrita do índice como uma coluna no arquivo CSV."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Exemplo: Escrita de um DataFrame em um arquivo CSV\n",
+    "df_novo = pd.DataFrame({\n",
+    "    'Nome': ['Alice', 'Bob', 'Carol'],\n",
+    "    'Idade': [25, 30, 22],\n",
+    "    'Email': ['alice@example.com', 'bob@example.com', 'carol@example.com']\n",
+    "})\n",
+    "\n",
+    "df_novo.to_csv('saida_pandas.csv', index=False)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "\n",
+    "## Tarefas de dados:\n",
+    "Utilizar um arquivo CSV de sua escolha (pode ser um conjunto de dados público sobre um tema de interesse) para realizar as seguintes tarefas com Pandas:\n",
+    "1. Carregar os dados em um DataFrame.\n",
+    "2. Realizar uma análise exploratória básica (número de linhas, colunas, tipos de dados).\n",
+    "3. Limpar os dados se necessário (tratar valores ausentes, remover duplicatas).\n",
+    "4. Criar novas colunas com dados derivados ou calculados.\n",
+    "5. Salvar o DataFrame modificado em um novo arquivo CSV.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'pandas.core.frame.DataFrame'>\n",
+      "RangeIndex: 17 entries, 0 to 16\n",
+      "Data columns (total 2 columns):\n",
+      " #   Column  Non-Null Count  Dtype \n",
+      "---  ------  --------------  ----- \n",
+      " 0   nome    17 non-null     object\n",
+      " 1   idade   17 non-null     int64 \n",
+      "dtypes: int64(1), object(1)\n",
+      "memory usage: 404.0+ bytes\n",
+      "None\n",
+      "<bound method NDFrame.head of        nome  idade  Nova_Coluna\n",
+      "0       Ana     28            0\n",
+      "1    Amélia     34            0\n",
+      "2      João     30            0\n",
+      "3       Ana     25            1\n",
+      "4     Maria     35            1\n",
+      "5     Pedro     40            0\n",
+      "6      José     20            0\n",
+      "7    Marcos     30            0\n",
+      "8    Carlos     35            1\n",
+      "9     Jorge     40            0\n",
+      "10  Mariana     20            0\n",
+      "11    Marta     25            1\n",
+      "12    Joana     25            1\n",
+      "13    Carla     35            1>\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "# Solucao do Desafio (Exemplo com dados ficticios)\n",
+    "# 1. Carregar os dados\n",
+    "df = pd.read_csv('dados/usuarios.csv')\n",
+    "# 2. Analise exploratoria basica\n",
+    "print(df.info())\n",
+    "\n",
+    "# 3. Limpeza dos dados\n",
+    "df.dropna(inplace=True)  # Remover linhas com valores ausentes\n",
+    "df.drop_duplicates(inplace=True)  # Remover duplicatas\n",
+    "\n",
+    "# 4. Criar novas colunas\n",
+    "df['Nova_Coluna'] = df['idade'] % 2\n",
+    "\n",
+    "print(df.head)\n",
+    "# 5. Salvar em novo arquivo CSV\n",
+    "df.to_csv('dados/exemplo_modificado.csv', index=False)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Manipulacao de Dados JSON com Pandas"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Objetivo:\n",
+    "Utilizar a biblioteca Pandas para manipular dados no formato JSON, convertendo-os facilmente entre formatos JSON e DataFrame para analise e processamento de dados.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Função pd.read_json() para carregar dados JSON em um DataFrame, discutindo diferentes opções de orientação de dados (como records, split, index, etc.) e como elas afetam a leitura dos dados."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {
+    "metadata": {}
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "    nome  idade              email\n",
+      "0  Alice     25  alice@example.com\n",
+      "1    Bob     30    bob@example.com\n",
+      "2  Carol     22  carol@example.com\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\dacio\\AppData\\Local\\Temp\\ipykernel_35480\\1526370021.py:5: FutureWarning: Passing literal json to 'read_json' is deprecated and will be removed in a future version. To read from a literal string, wrap it in a 'StringIO' object.\n",
+      "  df = pd.read_json(dados_json)\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "\n",
+    "# Exemplo: Carregando dados JSON em um DataFrame\n",
+    "dados_json = '{\"nome\": [\"Alice\", \"Bob\", \"Carol\"], \"idade\": [25, 30, 22], \"email\": [\"alice@example.com\", \"bob@example.com\", \"carol@example.com\"]}'\n",
+    "df = pd.read_json(dados_json)\n",
+    "print(df)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Usar a função pd.read_json() para carregar dados JSON em um DataFrame, discutindo diferentes opções de orientação de dados (como records, split, index, etc.) e como elas afetam a leitura dos dados."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Carregando JSON com orientação diferente\n",
+    "df_orientado = pd.read_json('dados/saidaPessoas.json', orient='records')\n",
+    "print(df_orientado)\n",
+    "\n",
+    "df_orientado.to_json('dados/saida_orientada.json', orient='records', indent=4)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Exemplo: Convertendo um DataFrame em JSON\n",
+    "df_novo = pd.DataFrame({\n",
+    "    'Produto': ['Mesa', 'Cadeira', 'Lampada'],\n",
+    "    'Preco': [300.00, 150.00, 50.00],\n",
+    "    'Quantidade': [10, 20, 30]\n",
+    "})\n",
+    "\n",
+    "json_saida = df_novo.to_json(orient='records', indent=4)\n",
+    "print(json_saida)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Normalização de dados JSON aninhados usando pd.json_normalize, facilitando a análise de dados complexos e hierárquicos."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "dados_aninhados = [\n",
+    "    {'nome': 'João', 'info': {'idade': 30, 'cidade': 'São Paulo'}},\n",
+    "    {'nome': 'Ana', 'info': {'idade': 25, 'cidade': 'Rio de Janeiro'}}\n",
+    "]\n",
+    "\n",
+    "df_normalizado = pd.json_normalize(dados_aninhados)\n",
+    "print(df_normalizado)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Análise com Pandas: Convertendo dados JSON em DataFrame para análise mais profunda usando Pandas."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import json\n",
+    "\n",
+    "# Simulando dados JSON\n",
+    "dados_json = '''\n",
+    "[\n",
+    "    {\"nome\": \"Alice\", \"idade\": 30, \"cidade\": \"New York\"},\n",
+    "    {\"nome\": \"Bob\", \"idade\": 25, \"cidade\": \"Los Angeles\"}\n",
+    "]\n",
+    "'''\n",
+    "dados = json.loads(dados_json)\n",
+    "df = pd.DataFrame(dados)\n",
+    "print(df)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "\n",
+    "## Desafio:\n",
+    "Dado um DataFrame contendo informações sobre filmes (titulo, gênero, ano de lançamento), converta-o para o formato JSON. Em seguida, carregue esse JSON de volta para um DataFrame e adicione uma nova coluna com a duração dos filmes. Salve o DataFrame final como um novo arquivo JSON.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {
+    "metadata": {}
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\dacio\\AppData\\Local\\Temp\\ipykernel_35480\\1278555736.py:12: FutureWarning: Passing literal json to 'read_json' is deprecated and will be removed in a future version. To read from a literal string, wrap it in a 'StringIO' object.\n",
+      "  filmes_df_novo = pd.read_json(json_filmes)\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "# Solucao do Desafio\n",
+    "filmes_df = pd.DataFrame({\n",
+    "    'Titulo': ['Matrix', 'Clube da Luta', 'A Origem'],\n",
+    "    'Genero': ['Ficcao Cientifica', 'Drama', 'Ficcao Cientifica'],\n",
+    "    'Ano': [1999, 1999, 2010]\n",
+    "})\n",
+    "\n",
+    "# Convertendo para JSON\n",
+    "json_filmes = filmes_df.to_json(orient='records', indent=4)\n",
+    "\n",
+    "# Carregando de volta para um DataFrame\n",
+    "filmes_df_novo = pd.read_json(json_filmes)\n",
+    "\n",
+    "# Adicionando uma nova coluna\n",
+    "filmes_df_novo['Duracao'] = [136, 139, 148]\n",
+    "\n",
+    "# Salvando como um novo arquivo JSON\n",
+    "filmes_df_novo.to_json('dados/filmes_atualizado.json', orient='records', indent=4)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Arquivos Excel:\n",
+    "\n",
+    "### Objetivo:\n",
+    "Usar a biblioteca Pandas para a manipulacao de dados provenientes de arquivos Excel, abrangendo desde a leitura de multiplas planilhas ate a escrita de dados em novos arquivos Excel.\n",
+    "\n",
+    "Pandas pode facilmente ler planilhas do Excel usando o método pd.read_excel(), tornando a transição de dados do Excel para análise em Python suave.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {
+    "metadata": {}
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Produto</th>\n",
+       "      <th>Preço</th>\n",
+       "      <th>Quantidade</th>\n",
+       "      <th>Data</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>Livro</td>\n",
+       "      <td>118.84</td>\n",
+       "      <td>40</td>\n",
+       "      <td>2023-01-01</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>Caderno</td>\n",
+       "      <td>46.32</td>\n",
+       "      <td>78</td>\n",
+       "      <td>2023-01-02</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>Livro</td>\n",
+       "      <td>62.33</td>\n",
+       "      <td>95</td>\n",
+       "      <td>2023-01-03</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>Caneta</td>\n",
+       "      <td>92.26</td>\n",
+       "      <td>60</td>\n",
+       "      <td>2023-01-04</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>Caderno</td>\n",
+       "      <td>48.20</td>\n",
+       "      <td>31</td>\n",
+       "      <td>2023-01-05</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>5</th>\n",
+       "      <td>Caderno</td>\n",
+       "      <td>61.92</td>\n",
+       "      <td>27</td>\n",
+       "      <td>2023-01-06</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>6</th>\n",
+       "      <td>Caneta</td>\n",
+       "      <td>37.59</td>\n",
+       "      <td>81</td>\n",
+       "      <td>2023-01-07</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>7</th>\n",
+       "      <td>Livro</td>\n",
+       "      <td>74.38</td>\n",
+       "      <td>84</td>\n",
+       "      <td>2023-01-08</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>8</th>\n",
+       "      <td>Livro</td>\n",
+       "      <td>16.25</td>\n",
+       "      <td>95</td>\n",
+       "      <td>2023-01-09</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>9</th>\n",
+       "      <td>Caneta</td>\n",
+       "      <td>121.97</td>\n",
+       "      <td>56</td>\n",
+       "      <td>2023-01-10</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>10</th>\n",
+       "      <td>Livro</td>\n",
+       "      <td>20.77</td>\n",
+       "      <td>51</td>\n",
+       "      <td>2023-01-11</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>11</th>\n",
+       "      <td>Livro</td>\n",
+       "      <td>82.64</td>\n",
+       "      <td>85</td>\n",
+       "      <td>2023-01-12</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>12</th>\n",
+       "      <td>Caderno</td>\n",
+       "      <td>52.95</td>\n",
+       "      <td>66</td>\n",
+       "      <td>2023-01-13</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>13</th>\n",
+       "      <td>Livro</td>\n",
+       "      <td>90.86</td>\n",
+       "      <td>65</td>\n",
+       "      <td>2023-01-14</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>14</th>\n",
+       "      <td>Livro</td>\n",
+       "      <td>144.32</td>\n",
+       "      <td>52</td>\n",
+       "      <td>2023-01-15</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>15</th>\n",
+       "      <td>Caneta</td>\n",
+       "      <td>100.38</td>\n",
+       "      <td>5</td>\n",
+       "      <td>2023-01-16</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>16</th>\n",
+       "      <td>Caneta</td>\n",
+       "      <td>14.95</td>\n",
+       "      <td>15</td>\n",
+       "      <td>2023-01-17</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>17</th>\n",
+       "      <td>Caneta</td>\n",
+       "      <td>70.26</td>\n",
+       "      <td>80</td>\n",
+       "      <td>2023-01-18</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>18</th>\n",
+       "      <td>Caneta</td>\n",
+       "      <td>81.40</td>\n",
+       "      <td>18</td>\n",
+       "      <td>2023-01-19</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>19</th>\n",
+       "      <td>Caneta</td>\n",
+       "      <td>85.06</td>\n",
+       "      <td>76</td>\n",
+       "      <td>2023-01-20</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>20</th>\n",
+       "      <td>Caneta</td>\n",
+       "      <td>105.39</td>\n",
+       "      <td>99</td>\n",
+       "      <td>2023-01-21</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>21</th>\n",
+       "      <td>Caderno</td>\n",
+       "      <td>48.86</td>\n",
+       "      <td>11</td>\n",
+       "      <td>2023-01-22</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>22</th>\n",
+       "      <td>Livro</td>\n",
+       "      <td>28.04</td>\n",
+       "      <td>50</td>\n",
+       "      <td>2023-01-23</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>23</th>\n",
+       "      <td>Caderno</td>\n",
+       "      <td>64.97</td>\n",
+       "      <td>35</td>\n",
+       "      <td>2023-01-24</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>24</th>\n",
+       "      <td>Livro</td>\n",
+       "      <td>143.90</td>\n",
+       "      <td>20</td>\n",
+       "      <td>2023-01-25</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>25</th>\n",
+       "      <td>Caneta</td>\n",
+       "      <td>36.20</td>\n",
+       "      <td>46</td>\n",
+       "      <td>2023-01-26</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>26</th>\n",
+       "      <td>Livro</td>\n",
+       "      <td>136.56</td>\n",
+       "      <td>43</td>\n",
+       "      <td>2023-01-27</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>27</th>\n",
+       "      <td>Caderno</td>\n",
+       "      <td>86.13</td>\n",
+       "      <td>58</td>\n",
+       "      <td>2023-01-28</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>28</th>\n",
+       "      <td>Livro</td>\n",
+       "      <td>73.97</td>\n",
+       "      <td>48</td>\n",
+       "      <td>2023-01-29</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>29</th>\n",
+       "      <td>Livro</td>\n",
+       "      <td>133.49</td>\n",
+       "      <td>87</td>\n",
+       "      <td>2023-01-30</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "    Produto   Preço  Quantidade       Data\n",
+       "0     Livro  118.84          40 2023-01-01\n",
+       "1   Caderno   46.32          78 2023-01-02\n",
+       "2     Livro   62.33          95 2023-01-03\n",
+       "3    Caneta   92.26          60 2023-01-04\n",
+       "4   Caderno   48.20          31 2023-01-05\n",
+       "5   Caderno   61.92          27 2023-01-06\n",
+       "6    Caneta   37.59          81 2023-01-07\n",
+       "7     Livro   74.38          84 2023-01-08\n",
+       "8     Livro   16.25          95 2023-01-09\n",
+       "9    Caneta  121.97          56 2023-01-10\n",
+       "10    Livro   20.77          51 2023-01-11\n",
+       "11    Livro   82.64          85 2023-01-12\n",
+       "12  Caderno   52.95          66 2023-01-13\n",
+       "13    Livro   90.86          65 2023-01-14\n",
+       "14    Livro  144.32          52 2023-01-15\n",
+       "15   Caneta  100.38           5 2023-01-16\n",
+       "16   Caneta   14.95          15 2023-01-17\n",
+       "17   Caneta   70.26          80 2023-01-18\n",
+       "18   Caneta   81.40          18 2023-01-19\n",
+       "19   Caneta   85.06          76 2023-01-20\n",
+       "20   Caneta  105.39          99 2023-01-21\n",
+       "21  Caderno   48.86          11 2023-01-22\n",
+       "22    Livro   28.04          50 2023-01-23\n",
+       "23  Caderno   64.97          35 2023-01-24\n",
+       "24    Livro  143.90          20 2023-01-25\n",
+       "25   Caneta   36.20          46 2023-01-26\n",
+       "26    Livro  136.56          43 2023-01-27\n",
+       "27  Caderno   86.13          58 2023-01-28\n",
+       "28    Livro   73.97          48 2023-01-29\n",
+       "29    Livro  133.49          87 2023-01-30"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Carregando dados de um arquivo Excel\n",
+    "df_excel = pd.read_excel('dadosFictícios/Exemplo_Aula_10.xlsx')\n",
+    "df_excel"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Carregar múltiplas planilhas de um único arquivo Excel em diferentes DataFrames, utilizando o argumento sheet_name."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "xlsx = pd.ExcelFile('dados/exemplo.xlsx')\n",
+    "df_sheet1 = pd.read_excel(xlsx, 'Planilha1')\n",
+    "df_sheet2 = pd.read_excel(xlsx, 'Planilha2')\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Escrevendo dados em um arquivo Excel"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\n",
+    "# Exemplo: Escrevendo dados em um arquivo Excel\n",
+    "df_novo = pd.DataFrame({\n",
+    "    'Nome': ['Alice', 'Bob', 'Carol'],\n",
+    "    'Idade': [25, 30, 22],\n",
+    "    'Email': ['alice@example.com', 'bob@example.com', 'carol@example.com']\n",
+    "})\n",
+    "\n",
+    "with pd.ExcelWriter('dados/saida.xlsx') as writer:\n",
+    "    df_novo.to_excel(writer, sheet_name='NovaPlanilha', index=False)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Salvar um DataFrame em um arquivo Excel, usando o método to_excel(), e como escrever múltiplos DataFrames em diferentes planilhas do mesmo arquivo."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "with pd.ExcelWriter('dados/saida.xlsx') as writer:\n",
+    "    df_sheet1.to_excel(writer, sheet_name='NovaPlanilha1', index=False)\n",
+    "    df_sheet2.to_excel(writer, sheet_name='NovaPlanilha2', index=False)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Combinação de múltiplos DataFrames e a utilização de funções como merge e concat para integrar dados de várias fontes."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Concatenando dados de duas planilhas\n",
+    "df_concatenado = pd.concat([df_sheet1, df_sheet2], ignore_index=True)\n",
+    "print(df_concatenado)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Combinando Dados de Multiplos Arquivos Excel com Pandas"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "\n",
+    "### Objetivo:\n",
+    "Combinar dados de multiplas fontes, especificamente de varios arquivos Excel, em um unico DataFrame usando Pandas, para analise consolidada.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\n",
+    "import pandas as pd\n",
+    "\n",
+    "# Carregando dados de multiplos arquivos Excel\n",
+    "df1 = pd.read_excel('dados_janeiro.xlsx')\n",
+    "df2 = pd.read_excel('dados_fevereiro.xlsx')\n",
+    "\n",
+    "# Combinando os DataFrames\n",
+    "df_combinado = pd.concat([df1, df2], ignore_index=True)\n",
+    "print(df_combinado.head())\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\n",
+    "# Exemplo: Combinando dados usando merge\n",
+    "df_clientes = pd.read_excel('clientes.xlsx')\n",
+    "df_vendas = pd.read_excel('vendas.xlsx')\n",
+    "\n",
+    "df_final = pd.merge(df_vendas, df_clientes, on='cliente_id')\n",
+    "print(df_final.head())\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "\n",
+    "## Desafio:\n",
+    "Imagine que você tenha dois arquivos Excel, cada um contendo dados de vendas de diferentes meses. Seu desafio é carregar ambos os arquivos em DataFrames, combinar os dados em um único DataFrame e calcular o total de vendas para cada produto. Finalmente, escreva o resultado em um novo arquivo Excel.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Solucao do Desafio\n",
+    "vendas_jan = pd.read_excel('vendas_janeiro.xlsx')\n",
+    "vendas_fev = pd.read_excel('vendas_fevereiro.xlsx')\n",
+    "\n",
+    "# Combinando os DataFrames\n",
+    "vendas_total = pd.concat([vendas_jan, vendas_fev], ignore_index=True)\n",
+    "\n",
+    "# Calculando o total de vendas por produto\n",
+    "total_por_produto = vendas_total.groupby('Produto').sum()['Quantidade']\n",
+    "\n",
+    "# Salvando o resultado em um novo arquivo Excel\n",
+    "total_por_produto.to_excel('total_vendas.xlsx')\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "\n",
+    "## Desafio:\n",
+    "Você possui três arquivos Excel com dados de vendas dos primeiros três trimestres do ano. Cada arquivo contém dados de vendas com as colunas 'Data', 'Produto' e 'Quantidade'. Seu desafio é carregar esses arquivos em DataFrames separados, combiná-los em um único DataFrame e, em seguida, calcular o total de vendas por produto.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\n",
+    "# Solucao do Desafio\n",
+    "df_q1 = pd.read_excel('vendas_q1.xlsx')\n",
+    "df_q2 = pd.read_excel('vendas_q2.xlsx')\n",
+    "df_q3 = pd.read_excel('vendas_q3.xlsx')\n",
+    "\n",
+    "# Combinando os DataFrames\n",
+    "df_total = pd.concat([df_q1, df_q2, df_q3])\n",
+    "\n",
+    "# Calculando total de vendas por produto\n",
+    "total_vendas_produto = df_total.groupby('Produto')['Quantidade'].sum()\n",
+    "print(total_vendas_produto)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Insights para Dados\n",
+    "Os dados muitas vezes estão espalhados por vários arquivos ou planilhas e a habilidade de combiná-los é crucial para análises abrangentes.\n",
+    "\n",
+    "Cenário comum onde dados de vendas estão distribuídos mensalmente em diferentes arquivos e precisam ser consolidados para análise anual."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Carregar múltiplos arquivos Excel, usando laços for junto com listas de nomes de arquivos ou padrões de correspondência de nomes."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import glob\n",
+    "\n",
+    "# Carregando todos os arquivos Excel no diretório atual\n",
+    "arquivos_excel = glob.glob('dados_mes_*.xlsx')\n",
+    "df_total = pd.DataFrame()\n",
+    "\n",
+    "for arquivo in arquivos_excel:\n",
+    "    df = pd.read_excel(arquivo)\n",
+    "    df_total = pd.concat([df_total, df], ignore_index=True)\n",
+    "\n",
+    "print(df_total)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Utilizar pd.concat() para combinar DataFrames verticalmente (unindo dados) e pd.merge() para combinar horizontalmente (enriquecendo os dados com informações adicionais)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Supondo df_vendas e df_clientes como DataFrames previamente carregados\n",
+    "df_combinado = pd.merge(df_vendas, df_clientes, on='cliente_id')\n",
+    "print(df_combinado)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Verificar e tratar os dados após a combinação, como lidar com valores ausentes, duplicatas e inconsistências."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Verificando valores ausentes\n",
+    "print(df_combinado.isnull().sum())\n",
+    "\n",
+    "# Removendo duplicatas\n",
+    "df_combinado.drop_duplicates(inplace=True)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Db SQL\n",
+    "Para dados armazenados em bancos de dados, Pandas pode executar consultas SQL diretamente e retornar o resultado como um DataFrame utilizando o método pd.read_sql_query()."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from sqlalchemy import create_engine\n",
+    "\n",
+    "# Criando uma conexão ao banco de dados (exemplo SQLite)\n",
+    "engine = create_engine('sqlite:///caminho/para/seu/banco_de_dados.db')\n",
+    "\n",
+    "# Carregando dados via consulta SQL\n",
+    "df_sql = pd.read_sql_query(\"SELECT * FROM sua_tabela\", engine)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Limpeza e Preparação de Dados\n",
+    "- Uma etapa fundamental no processo de análise de dados é a limpeza e preparação dos dados. Esta fase envolve tratar valores ausentes, remover duplicatas, filtrar dados, e fazer transformações necessárias para garantir que os dados estejam em um formato adequado para análise. Nesta aula, vamos explorar técnicas comuns de limpeza de dados usando Pandas."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Tratamento de Valores Ausentes\n",
+    "- Valores ausentes são comuns em muitos conjuntos de dados e podem ser o resultado de erros de entrada de dados, falhas na coleta de dados, ou outras inconsistências. Pandas oferece várias formas de lidar com valores ausentes:\n",
+    "\n",
+    "  - Descartando valores ausentes: Usar dropna() para remover linhas ou colunas que contêm valores ausentes."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Removendo linhas com valores ausentes\n",
+    "df_limpo = df.dropna()\n",
+    "\n",
+    "# Removendo colunas com valores ausentes\n",
+    "df_limpo = df.dropna(axis=1)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Preenchendo valores ausentes: Utilizar fillna() para substituir os valores ausentes por um valor específico, como a média da coluna.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "metadata": {}
+   },
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'df' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "Cell \u001b[1;32mIn[1], line 2\u001b[0m\n\u001b[0;32m      1\u001b[0m \u001b[38;5;66;03m# Preenchendo valores ausentes com a média da coluna\u001b[39;00m\n\u001b[1;32m----> 2\u001b[0m df[\u001b[38;5;124m'\u001b[39m\u001b[38;5;124mcoluna\u001b[39m\u001b[38;5;124m'\u001b[39m] \u001b[38;5;241m=\u001b[39m \u001b[43mdf\u001b[49m[\u001b[38;5;124m'\u001b[39m\u001b[38;5;124mcoluna\u001b[39m\u001b[38;5;124m'\u001b[39m]\u001b[38;5;241m.\u001b[39mfillna(df[\u001b[38;5;124m'\u001b[39m\u001b[38;5;124mcoluna\u001b[39m\u001b[38;5;124m'\u001b[39m]\u001b[38;5;241m.\u001b[39mmean())\n",
+      "\u001b[1;31mNameError\u001b[0m: name 'df' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "# Preenchendo valores ausentes com a média da coluna\n",
+    "df['coluna'] = df['coluna'].fillna(df['coluna'].mean())\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- Remoção de Duplicatas: Dados duplicados podem distorcer análises e resultados. Pandas torna fácil identificar e remover duplicatas com drop_duplicates().\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Removendo duplicatas\n",
+    "df_unico = df.drop_duplicates()\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Filtragem de Dados\n",
+    "Filtrar dados é um processo chave para focar em informações relevantes. Com Pandas, você pode usar condições booleanas para filtrar linhas que atendem a critérios específicos.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\n",
+    "# Filtrando dados onde a coluna 'idade' é maior que 30\n",
+    "df_filtrado = df[df['idade'] > 30]\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- Transformação de Dados\n",
+    "  - Transformações são frequentemente necessárias para adequar os dados às necessidades da análise. Isso pode incluir a criação de novas colunas a partir de dados existentes, conversão de tipos de dados, entre outros.\n",
+    "\n",
+    "- Adicionando novas colunas: Você pode adicionar colunas baseadas em operações com colunas existentes.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\n",
+    "# Criando uma nova coluna 'idade_dobrada'\n",
+    "df['idade_dobrada'] = df['idade'] * 2\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Conversão de tipos de dados: Use astype() para converter o tipo de dados de uma coluna.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\n",
+    "# Convertendo a coluna 'idade' para float\n",
+    "df['idade'] = df['idade'].astype(float)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- Exemplo Prático: \n",
+    "Considerando um DataFrame df_vendas que contém dados de vendas, incluindo algumas colunas com valores ausentes e possíveis duplicatas:\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Preenchendo valores ausentes na coluna 'quantidade' com a média\n",
+    "df_vendas['quantidade'] = df_vendas['quantidade'].fillna(df_vendas['quantidade'].mean())\n",
+    "\n",
+    "# Removendo duplicatas\n",
+    "df_vendas = df_vendas.drop_duplicates()\n",
+    "\n",
+    "# Filtrando vendas com valor maior que 500\n",
+    "df_vendas_altas = df_vendas[df_vendas['valor'] > 500]\n",
+    "\n",
+    "# Adicionando uma nova coluna 'valor_total' (quantidade * valor)\n",
+    "df_vendas['valor_total'] = df_vendas['quantidade'] * df_vendas['valor']"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Transformação de Dados\n",
+    "\n",
+    "Depois de limpar e preparar os dados, o próximo passo é transformá-los para facilitar análises futuras.\n",
+    "Operações de manipulação de dados, incluindo operações com colunas, funções de mapeamento, agrupamento, e agregação, utilizando a biblioteca Pandas.\n",
+    "\n",
+    "\n",
+    "- Operações com Colunas: \n",
+    "Adicionar, remover e modificar colunas: Pandas permite a manipulação flexível de colunas em um DataFrame."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Adicionando uma nova coluna\n",
+    "df['nova_coluna'] = df['coluna_existente'] * 10\n",
+    "\n",
+    "# Removendo uma coluna\n",
+    "df = df.drop('coluna_para_remover', axis=1)\n",
+    "\n",
+    "# Modificar valores de uma coluna (por exemplo, aplicando uma função lambda)\n",
+    "df['coluna_existente'] = df['coluna_existente'].apply(lambda x: x * 2)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Funções de Mapeamento\n",
+    "apply() e map(): Estas funções permitem aplicar uma função ao longo de um eixo do DataFrame ou a uma Series, respectivamente, facilitando a transformação de dados."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Usando apply() para aplicar uma função a todas as linhas de uma coluna\n",
+    "df['coluna'] = df['coluna'].apply(lambda x: x + 100)\n",
+    "\n",
+    "# Usando map() para substituir valores em uma Series\n",
+    "df['categoria'] = df['categoria'].map({'A': 1, 'B': 2, 'C': 3})\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Agrupamento e Agregação\n",
+    "groupby(): Esta função é usada para agrupar dados com base em uma ou mais colunas e aplicar uma função de agregação (como soma, média, etc.) ao grupo."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Agrupando dados pela coluna 'categoria' e calculando a média das outras colunas\n",
+    "df_agrupado = df.groupby('categoria').mean()\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Funções de agregação: Após agrupar os dados, você pode aplicar várias funções de agregação para resumir os dados agrupados."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Calculando várias estatísticas agregadas após o agrupamento\n",
+    "df_agrupado = df.groupby('categoria').agg({'coluna_numerica': ['mean', 'min', 'max']})\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Exemplo Prático\n",
+    "\n",
+    "Suponha que temos um DataFrame df_vendas contendo colunas para data, categoria, valor_venda e quantidade. Vamos realizar algumas transformações para analisar esses dados."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "\n",
+    "# Simulando o DataFrame\n",
+    "data = {\n",
+    "    'data': pd.date_range('2021-01-01', periods=4),\n",
+    "    'categoria': ['A', 'B', 'A', 'B'],\n",
+    "    'valor_venda': [100, 200, 150, 300],\n",
+    "    'quantidade': [1, 2, 2, 3]\n",
+    "}\n",
+    "df_vendas = pd.DataFrame(data)\n",
+    "\n",
+    "# Adicionando uma coluna 'valor_total'\n",
+    "df_vendas['valor_total'] = df_vendas['valor_venda'] * df_vendas['quantidade']\n",
+    "\n",
+    "# Agrupando por 'categoria' e calculando o valor total de vendas por categoria\n",
+    "vendas_por_categoria = df_vendas.groupby('categoria')['valor_total'].sum()\n",
+    "\n",
+    "# Exibindo o resultado\n",
+    "print(vendas_por_categoria)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Análise e Visualização de Dados\n",
+    "\n",
+    "Pandas integra-se bem com Matplotlib e Seaborn para visualização de dados, permitindo a análise visual dos dados."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAjcAAAHHCAYAAABDUnkqAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjguMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/H5lhTAAAACXBIWXMAAA9hAAAPYQGoP6dpAAA9EElEQVR4nO3deVhUdf//8deArALigmCIYm5plqam4ZKWCplZWrdmVipptkiafMvUUjTv0rvSbLFoudW7vE3TyqxMJVDLW6rbLdPcl6hUJDcUEkbm/P7ox9yNIA7DwMDx+bgurqv5zOec8z5vz8CrM+fMWAzDMAQAAGASXp4uAAAAwJ0INwAAwFQINwAAwFQINwAAwFQINwAAwFQINwAAwFQINwAAwFQINwAAwFQINwAAwFQIN0AlNWXKFFkslgrZVvfu3dW9e3f747Vr18pisWjp0qVu28ahQ4dksVg0f/78Ui+7dOlShYaGqnPnztq7d69Gjhyp2bNnu622klgsFk2ZMqVCtvVXZenXxVTkMQV4EuEGqADz58+XxWKx//j7++uKK65QXFycXn31VZ05c8Yt2zl8+LCmTJmirVu3umV9lcULL7ygkSNHql69errqqqv08ccfq1+/fp4uyyXR0dG67bbbPF0GYGrVPF0AcDl59tln1ahRI1mtVh09elRr167V448/rlmzZmn58uW69tpr7XOfeeYZjR8/vlTrP3z4sKZOnaro6Gi1adPG6eVWr15dqu24omHDhvrjjz/k4+NT6mWXLFmiyMhIVatWTVlZWQoODpa/v385VAnADAg3QAXq3bu32rdvb388YcIEpaWl6bbbbtPtt9+unTt3KiAgQJJUrVo1VatWvi/R3NxcBQYGytfXt1y3I8l+xsoVDRs2tP93WFiYu0oCYFK8LQV42M0336xJkybp559/1oIFC+zjxV0fkZKSoi5duig0NFRBQUFq3ry5Jk6cKOnP62Suv/56SVJ8fLz9LbDCaza6d++uVq1aadOmTbrxxhsVGBhoX/bCa24KFRQUaOLEiYqIiFD16tV1++2365dffnGYEx0drWHDhhVZ9sJ1Xuwakl27dmngwIEKCwtTQECAmjdvrqefftr+/MGDB/XII4+oWbNmCggIUO3atTVgwAAdOnSoyDYPHDigAQMGqFatWgoMDNQNN9ygL774osi84uTl5Wns2LEKCwtTcHCwbr/9dv3666/Fzv3tt9/0wAMPKDw8XH5+frr66qs1d+5cp7ZTnFOnTmnYsGGqUaOGQkNDNXToUJ06darIvG3btmnYsGG68sor5e/vr4iICD3wwAM6fvx4kbnr16/X9ddfL39/fzVu3FhvvfXWRbe/YMECtWvXTgEBAapVq5YGDRpU5N957969uuuuuxQRESF/f3/Vr19fgwYN0unTp13eb6C8cOYGqATuv/9+TZw4UatXr9aDDz5Y7JwdO3botttu07XXXqtnn31Wfn5+2rdvn/7zn/9Iklq0aKFnn31WkydP1siRI9W1a1dJUqdOnezrOH78uHr37q1BgwbpvvvuU3h4eIl1Pffcc7JYLHrqqad07NgxzZ49Wz179tTWrVvtZ5jKYtu2beratat8fHw0cuRIRUdHa//+/frss8/03HPPSZK+++47paen65577lH9+vV18OBBJScnq3v37vrpp58UGBgoScrMzFSnTp2Um5ur0aNHq3bt2vrXv/6l22+/XUuXLlX//v1LrGXEiBFasGCBBg8erE6dOiktLU19+vQpMi8zM1M33HCDLBaLEhISFBYWpi+//FLDhw9Xdna2Hn/88VL1wDAM3XHHHVq/fr0efvhhtWjRQp988omGDh1aZG5KSooOHDig+Ph4RUREaMeOHXr77be1Y8cOffvtt/Yw/OOPPyo2NlZhYWGaMmWKzp8/r6SkpGL/vZ977jlNmjRJAwcO1IgRI5SVlaXXXntNN954o7Zs2aLQ0FDl5+crLi5OeXl5euyxxxQREaHffvtNn3/+uU6dOqUaNWqUap+BcmcAKHfz5s0zJBn//e9/LzqnRo0axnXXXWd/nJSUZPz1Jfryyy8bkoysrKyLruO///2vIcmYN29ekee6detmSDKSk5OLfa5bt272x2vWrDEkGZGRkUZ2drZ9/MMPPzQkGa+88op9rGHDhsbQoUMvuc6DBw8Wqe3GG280goODjZ9//tlhWZvNZv/v3NzcIutOT083JBnvvfeefezxxx83JBnffPONfezMmTNGo0aNjOjoaKOgoKDIegpt3brVkGQ8+uijDuODBw82JBlJSUn2seHDhxv16tUzfv/9d4e5gwYNMmrUqFFsvX/VsGFDo0+fPvbHy5YtMyQZL7zwgn3s/PnzRteuXYv0q7h1f/DBB4Yk4+uvv7aP9evXz/D393fo608//WR4e3s7HFOHDh0yvL29jeeee85hnT/++KNRrVo1+/iWLVsMScaSJUtK3DegsuBtKaCSCAoKKvGuqdDQUEnSp59+KpvN5tI2/Pz8FB8f7/T8IUOGKDg42P74b3/7m+rVq6cVK1a4tP2/ysrK0tdff60HHnhADRo0cHjur2/H/fUMkdVq1fHjx9WkSROFhoZq8+bN9udWrFihDh06qEuXLvaxoKAgjRw5UocOHdJPP/100VoK92f06NEO4xeehTEMQx999JH69u0rwzD0+++/23/i4uJ0+vRph5qcsWLFClWrVk2PPPKIfczb21uPPfZYkbl/7cW5c+f0+++/64YbbpAk+3YLCgq0atUq9evXz6GvLVq0UFxcnMP6Pv74Y9lsNg0cONBhXyIiItS0aVOtWbNGkuxnZlatWqXc3NxS7R/gCYQboJI4e/asQ5C40N13363OnTtrxIgRCg8P16BBg/Thhx+WKuhERkaW6uLhpk2bOjy2WCxq0qRJsde7lNaBAwckSa1atSpx3h9//KHJkycrKipKfn5+qlOnjsLCwnTq1CmH6z1+/vlnNW/evMjyLVq0sD9/MT///LO8vLzUuHFjh/EL15eVlaVTp07p7bffVlhYmMNPYWg8duxYiftT3Lbr1aunoKCgErctSSdOnNCYMWMUHh6ugIAAhYWFqVGjRpJk70VWVpb++OOPIv92xa1z7969MgxDTZs2LbI/O3futO9Lo0aNlJiYqHfffVd16tRRXFyc5syZw/U2qLS45gaoBH799VedPn1aTZo0ueicgIAAff3111qzZo2++OILrVy5UosXL9bNN9+s1atXy9vb+5Lbccd1Mhe62IfCFRQUOFXTpTz22GOaN2+eHn/8ccXExKhGjRqyWCwaNGiQy2ewXFW4vfvuu6/Ya2IkOdzO724DBw7Uhg0b9OSTT6pNmzYKCgqSzWbTLbfc4lIvbDabLBaLvvzyy2L/rf4auGbOnKlhw4bp008/1erVqzV69GhNnz5d3377rerXr1+m/QLcjXADVALvv/++JBV52+BCXl5e6tGjh3r06KFZs2bp+eef19NPP601a9aoZ8+ebv/02b179zo8NgxD+/btc/gDXrNmzWLv7Pn555915ZVXXnTdhc9t3769xBqWLl2qoUOHaubMmfaxc+fOFdlmw4YNtXv37iLL79q1y/78xTRs2FA2m0379+93OLtx4foK76QqKChQz549S6zbWQ0bNlRqaqrOnj3rECYu3PbJkyeVmpqqqVOnavLkyfbxC/+NCu86u3C8uHU2btxYhmGoUaNGatas2SVrveaaa3TNNdfomWee0YYNG9S5c2clJyfr73//u1P7ClQU3pYCPCwtLU3Tpk1To0aNdO+991503okTJ4qMFX5QX15eniSpevXqklRs2HDFe++953Ad0NKlS3XkyBH17t3bPta4cWN9++23ys/Pt499/vnnRW4lvlBYWJhuvPFGzZ07VxkZGQ7PGYZh/29vb2+Hx5L02muvqaCgwGHs1ltv1ffff6/09HT7WE5Ojt5++21FR0erZcuWF62lcH9effVVh/ELv+LB29tbd911lz766KNiQ1lWVtZFt3Ext956q86fP68333zTPlZQUKDXXnutyLYlFelFcTXGxcVp2bJlDn3duXOnVq1a5TD3zjvvlLe3t6ZOnVpkvYZh2G8xz87O1vnz5x2ev+aaa+Tl5WU/9oDKhDM3QAX68ssvtWvXLp0/f16ZmZlKS0tTSkqKGjZsqOXLl5f4IXfPPvusvv76a/Xp00cNGzbUsWPH9MYbb6h+/fr2i2gbN26s0NBQJScnKzg4WNWrV1fHjh3t12WUVq1atdSlSxfFx8crMzNTs2fPVpMmTRxuVx8xYoSWLl2qW265RQMHDtT+/fu1YMGCItevFOfVV19Vly5d1LZtW40cOVKNGjXSoUOH9MUXX9i/QuK2227T+++/rxo1aqhly5ZKT0/XV199pdq1azusa/z48frggw/Uu3dvjR49WrVq1dK//vUvHTx4UB999JG8vC7+/3Jt2rTRPffcozfeeEOnT59Wp06dlJqaqn379hWZO2PGDK1Zs0YdO3bUgw8+qJYtW+rEiRPavHmzvvrqq2JDaEn69u2rzp07a/z48Tp06JBatmypjz/+uMj1LCEhIbrxxhv1wgsvyGq1KjIyUqtXr9bBgweLrHPq1KlauXKlunbtqkcffVTnz5/Xa6+9pquvvlrbtm2zz2vcuLH+/ve/a8KECTp06JD69eun4OBgHTx4UJ988olGjhypJ554QmlpaUpISNCAAQPUrFkznT9/Xu+//7497AGVjqdu0wIuJ4W3ghf++Pr6GhEREUavXr2MV155xeF260IX3gqemppq3HHHHcYVV1xh+Pr6GldccYVxzz33GHv27HFY7tNPPzVatmxpVKtWzeFW4m7duhlXX311sfVd7FbwDz74wJgwYYJRt25dIyAgwOjTp0+R27YNwzBmzpxpREZGGn5+fkbnzp2NjRs3OnUruGEYxvbt243+/fsbISEhhiSjefPmxqRJk+zPnzx50oiPjzfq1KljBAUFGXFxccauXbuKvQV9//79xt/+9jcjNDTU8Pf3Nzp06GB8/vnnxe7zhf744w9j9OjRRu3atY3q1asbffv2NX755Zcit4IbhmFkZmYao0aNMqKiogwfHx8jIiLC6NGjh/H2229fcjsX3gpuGIZx/Phx4/777zdCQkKMGjVqGPfff7/99uu/9uvXX381+vfvb4SGhho1atQwBgwYYBw+fLjYGtetW2e0a9fO8PX1Na688kojOTm5yDFV6KOPPjK6dOliVK9e3ahevbpx1VVXGaNGjTJ2795tGIZhHDhwwHjggQeMxo0bG/7+/katWrWMm266yfjqq6+c6i1Q0SyGccG5SADwkJ49e2rcuHGKjY31dCkAqjCuuQFQafTt29fhKygAwBVccwPA4z744APl5ORoyZIlqlu3rqfLAVDFceYGgMft2LFDCQkJ+u233/TEE094uhwAVRzX3AAAAFPhzA0AADAVwg0AADCVy/KCYpvNpsOHDys4ONjtH1cPAADKh2EYOnPmjK644ooSP5jzsgw3hw8fVlRUlKfLAAAALvjll19K/MLWyzLcBAcHS/qzOSEhIW5br9Vq1erVqxUbGysfHx+3rdeM6FXp0C/n0Svn0Svn0SvnlWevsrOzFRUVZf87fjGXZbgpfCsqJCTE7eEmMDBQISEhHPyXQK9Kh345j145j145j145ryJ6dalLSrigGAAAmArhBgAAmArhBgAAmArhBgAAmArhBgAAmArhBgAAmArhBgAAmArhBgAAmArhBgAAmArhBgAAmIrHw83XX3+tvn376oorrpDFYtGyZcsuuczatWvVtm1b+fn5qUmTJpo/f3651wkAAKoGj4ebnJwctW7dWnPmzHFq/sGDB9WnTx/ddNNN2rp1qx5//HGNGDFCq1atKudKAQBAVeDxL87s3bu3evfu7fT85ORkNWrUSDNnzpQktWjRQuvXr9fLL7+suLi48ioTAABUER4/c1Na6enp6tmzp8NYXFyc0tPTPVQRAACoTDx+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zxQAAEBFczncLFq0SB9++KFuvfVWd9YDAABQJi7fCu7r66smTZq4sxYAAIAycznc/N///Z9eeeUVGYbhznoAAADKxOW3pdavX681a9boyy+/1NVXX13ka8g//vjjMhcHAABQWi6Hm9DQUPXv39+dtQAAAJSZy+Fm3rx57qwDAADALVy+5kaSzp8/r6+++kpvvfWWzpw5I0k6fPiwzp4965biAAAASqvUZ25sNpu8vLz0888/65ZbblFGRoby8vLUq1cvBQcH6x//+Ify8vKUnJxcHvUCAACUqFRnbn788UfdeOONkv78EL/27dvr5MmTCggIsM/p37+/UlNT3VslAACAk5w+c7N06VI9++yzWrBggSTpm2++0YYNG+Tr6+swLzo6Wr/99pt7qwQAAHCS02dubDabCgoK7F+zUPj4Qr/++quCg4PdVyEAAEApOB1uBg4cqPfff18jR46UJPXq1UuzZ8+2P2+xWHT27FklJSXxlQwAAMBjSnVBcdu2bfXNN99IkmbNmqW4uDi1bNlS586d0+DBg7V3717VqVNHH3zwQbkUCwAAcCmlvluqWrU/F6lfv75++OEHLVq0SNu2bdPZs2c1fPhw3XvvvQ4XGAMAAFQklz/ET/oz6Nx3333uqgUAAKDMXA437733XonPDxkyxNVVAwAAuMzlcDNmzBiHx1arVbm5ufL19VVgYCDhBgAAeITLX79w8uRJh5+zZ89q9+7d6tKlCxcUAwAAjynTd0tdqGnTppoxY0aRszoAAAAVxa3hRvrzIuPDhw+7e7UAAABOcfmam+XLlzs8NgxDR44c0euvv67OnTuXuTAAAABXuBxu+vXr5/DYYrEoLCxMN998s2bOnFnWugAAAFzicrix2WzurAMAAMAt3H7NDQAAgCe5fOYmMTHR6bmzZs1ydTMAAACl4nK42bJli7Zs2SKr1armzZtLkvbs2SNvb2+1bdvWPs9isZS9SgAAACe5HG769u2r4OBg/etf/1LNmjUl/fnBfvHx8eratav+7//+z21FAgAAOMvla25mzpyp6dOn24ONJNWsWVN///vfuVsKAAB4jMvhJjs7W1lZWUXGs7KydObMmTIVBQAA4CqXw03//v0VHx+vjz/+WL/++qt+/fVXffTRRxo+fLjuvPNOd9YIAADgNJevuUlOTtYTTzyhwYMHy2q1/rmyatU0fPhwvfjii24rEAAAoDRcDjeBgYF644039OKLL2r//v2SpMaNG6t69epuKw4AAKC0yvwhfkeOHNGRI0fUtGlTVa9eXYZhuKMuAAAAl7gcbo4fP64ePXqoWbNmuvXWW3XkyBFJ0vDhw7kNHAAAeIzL4Wbs2LHy8fFRRkaGAgMD7eN33323Vq5c6ZbiAAAASsvla25Wr16tVatWqX79+g7jTZs21c8//1zmwgAAAFzh8pmbnJwchzM2hU6cOCE/P78yFQUAAOAql8NN165d9d5779kfWywW2Ww2vfDCC7rpppvcUhwAAEBpufy21AsvvKAePXpo48aNys/P17hx47Rjxw6dOHFC//nPf9xZIwAAgNNcPnPTqlUr7dmzR126dNEdd9yhnJwc3XnnndqyZYsaN27szhoBAACc5tKZG6vVqltuuUXJycl6+umn3V0TAACAy1w6c+Pj46Nt27a5uxYAAIAyc/ltqfvuu0///Oc/3VkLAABAmbl8QfH58+c1d+5cffXVV2rXrl2R75SaNWtWmYsDAAAorVKHmwMHDig6Olrbt29X27ZtJUl79uxxmGOxWNxTHQAAQCmVOtw0bdpUR44c0Zo1ayT9+XULr776qsLDw91eHAAAQGmV+pqbC7/1+8svv1ROTo7bCgIAACgLly8oLnRh2AEAAPCkUocbi8VS5JoarrEBAACVRamvuTEMQ8OGDbN/Oea5c+f08MMPF7lb6uOPP3ZPhQAAAKVQ6nAzdOhQh8f33Xef24oBAAAoq1KHm3nz5pVHHQAAAG5R5guK3WHOnDmKjo6Wv7+/OnbsqO+//96p5RYtWiSLxaJ+/fqVb4EAAKDK8Hi4Wbx4sRITE5WUlKTNmzerdevWiouL07Fjx0pc7tChQ3riiSfUtWvXCqoUAABUBR4PN7NmzdKDDz6o+Ph4tWzZUsnJyQoMDNTcuXMvukxBQYHuvfdeTZ06VVdeeWUFVgsAACo7l79byh3y8/O1adMmTZgwwT7m5eWlnj17Kj09/aLLPfvss6pbt66GDx+ub7755pLbycvLU15env1xdna2JMlqtcpqtZZhDxwVrsvPi8/+uZTCHpWlV+78t6vsCvf1ctpnV1XVXvl5V/zvjbK+Dqtaj8vCk8eVJ46Nsig8nsqjV86u02J48FP4Dh8+rMjISG3YsEExMTH28XHjxmndunX67rvviiyzfv16DRo0SFu3blWdOnU0bNgwnTp1SsuWLbvodqZMmaKpU6cWGV+4cKECAwPdsi8AAKB85ebmavDgwTp9+rRCQkIuOs+jZ25K68yZM7r//vv1zjvvqE6dOk4vN2HCBCUmJtofZ2dnKyoqSrGxsSU2p7SsVqtSUlI0aaOX8mx8sGFJ/LwMTWtvK1Ovtk+Jc3NVlVfhsdWrVy/5+Ph4upxKrar2qtWUVRW+zbK+DnkNVgxPHBtlUXhclUevCt95uRSPhps6derI29tbmZmZDuOZmZmKiIgoMn///v06dOiQ+vbtax+z2WySpGrVqmn37t1q3LhxkeX8/PzsHzr4Vz4+PuVykObZLMorINw4oyy9qkp/uNylvI5ZM6pqvfLk7wxXX4dVqb/u4onjqqr+PSmPXjm7Po9eUOzr66t27dopNTXVPmaz2ZSamurwNlWhq666Sj/++KO2bt1q/7n99tt10003aevWrYqKiqrI8gEAQCXk8belEhMTNXToULVv314dOnTQ7NmzlZOTo/j4eEnSkCFDFBkZqenTp8vf31+tWrVyWD40NFSSiowDAIDLk8fDzd13362srCxNnjxZR48eVZs2bbRy5UqFh4dLkjIyMuTl5fE71gEAQBXh8XAjSQkJCUpISCj2ubVr15a47Pz5891fEAAAqLI4JQIAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEyFcAMAAEylUoSbOXPmKDo6Wv7+/urYsaO+//77i85955131LVrV9WsWVM1a9ZUz549S5wPAAAuLx4PN4sXL1ZiYqKSkpK0efNmtW7dWnFxcTp27Fix89euXat77rlHa9asUXp6uqKiohQbG6vffvutgisHAACVkcfDzaxZs/Tggw8qPj5eLVu2VHJysgIDAzV37txi5//73//Wo48+qjZt2uiqq67Su+++K5vNptTU1AquHAAAVEbVPLnx/Px8bdq0SRMmTLCPeXl5qWfPnkpPT3dqHbm5ubJarapVq9ZF5+Tl5SkvL8/+ODs7W5JktVpltVpdrL6ownX5eRluW6dZFfaoLL1y579dZVe4r5fTPruqqvbKz7vif2+U9XVY1XpcFp48rjxxbJRF4fFUHr1ydp0WwzA81rXDhw8rMjJSGzZsUExMjH183LhxWrdunb777rtLruPRRx/VqlWrtGPHDvn7+xc7Z8qUKZo6dWqR8YULFyowMND1HQAAABUmNzdXgwcP1unTpxUSEnLReR49c1NWM2bM0KJFi7R27dqLBhtJmjBhghITE+2Ps7Oz7dfqlNSc0rJarUpJSdGkjV7Ks1nctl4z8vMyNK29rUy92j4lzs1VVV6Fx1avXr3k4+Pj6XIqtaraq1ZTVlX4Nsv6OuQ1WDE8cWyUReFxVR69Knzn5VI8Gm7q1Kkjb29vZWZmOoxnZmYqIiKixGVfeuklzZgxQ1999ZWuvfbaEuf6+fnJz8+vyLiPj0+5HKR5NovyCgg3zihLr6rSHy53Ka9j1oyqWq88+TvD1ddhVeqvu3jiuKqqf0/Ko1fOrs+jFxT7+vqqXbt2DhcDF14c/Ne3qS70wgsvaNq0aVq5cqXat29fEaUCAIAqwuNvSyUmJmro0KFq3769OnTooNmzZysnJ0fx8fGSpCFDhigyMlLTp0+XJP3jH//Q5MmTtXDhQkVHR+vo0aOSpKCgIAUFBXlsPwAAQOXg8XBz9913KysrS5MnT9bRo0fVpk0brVy5UuHh4ZKkjIwMeXn97wTTm2++qfz8fP3tb39zWE9SUpKmTJlSkaUDAIBKyOPhRpISEhKUkJBQ7HNr1651eHzo0KHyLwgAAFRZHv8QPwAAAHci3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFMh3AAAAFOpFOFmzpw5io6Olr+/vzp27Kjvv/++xPlLlizRVVddJX9/f11zzTVasWJFBVUKAAAqO4+Hm8WLFysxMVFJSUnavHmzWrdurbi4OB07dqzY+Rs2bNA999yj4cOHa8uWLerXr5/69eun7du3V3DlAACgMvJ4uJk1a5YefPBBxcfHq2XLlkpOTlZgYKDmzp1b7PxXXnlFt9xyi5588km1aNFC06ZNU9u2bfX6669XcOUAAKAy8mi4yc/P16ZNm9SzZ0/7mJeXl3r27Kn09PRil0lPT3eYL0lxcXEXnQ8AAC4v1Ty58d9//10FBQUKDw93GA8PD9euXbuKXebo0aPFzj969OhFt5OXl6e8vDz749OnT0uSTpw4IavV6mr5RVitVuXm5qqa1UsFNovb1mtG1WyGcnNtZerV8ePH3VxV5VV4bB0/flw+Pj6eLqdSq6q9qnY+p+K3WcbXIa/BiuGJY6MsCo+r8ujVmTNnJEmGYZRcg1u3WklNnz5dU6dOLTLeqFEjD1SDQoPLuHydmW4pA7isleV1yGsQF1PW3++XcubMGdWoUeOiz3s03NSpU0fe3t7KzMx0GM/MzFRERESxy0RERJRqviRNmDBBiYmJ9sc2m00nTpxQ7dq1ZbG47wxLdna2oqKi9MsvvygkJMRt6zUjelU69Mt59Mp59Mp59Mp55dkrwzB05swZXXHFFSXO82i48fX1Vbt27ZSamqp+/fpJ+jN4pKamKiEhodhlYmJilJqaqscff9w+lpKSopiYmItux8/PT35+fg5joaGhZS3/okJCQjj4nUSvSod+OY9eOY9eOY9eOa+8elXSGZtCHn9bKjExUUOHDlX79u3VoUMHzZ49Wzk5OYqPj5ckDRkyRJGRkZo+fbokacyYMerWrZtmzpypPn36aNGiRdq4caPefvttT+4GAACoJDwebu6++25lZWVp8uTJOnr0qNq0aaOVK1faLxrOyMiQl9f/burq1KmTFi5cqGeeeUYTJ05U06ZNtWzZMrVq1cpTuwAAACoRj4cbSUpISLjo21Br164tMjZgwAANGDCgnKsqPT8/PyUlJRV5CwxF0avSoV/Oo1fOo1fOo1fOqwy9shiXup8KAACgCvH4JxQDAAC4E+EGAACYCuEGAACYCuEGAACYCuHGBdOnT9f111+v4OBg1a1bV/369dPu3bsd5hw9elT333+/IiIiVL16dbVt21YfffSRhyr2HGd6tX//fvXv319hYWEKCQnRwIEDi3wK9eXgzTff1LXXXmv/4KuYmBh9+eWX9ufPnTunUaNGqXbt2goKCtJdd911WfZJunSv3n77bXXv3l0hISGyWCw6deqU54r1sJJ6deLECT322GNq3ry5AgIC1KBBA40ePdr+/XuXm0sdVw899JAaN26sgIAAhYWF6Y477rjo9yBeDi7Vr0KGYah3796yWCxatmxZhdRGuHHBunXrNGrUKH377bdKSUmR1WpVbGyscnL+9+VmQ4YM0e7du7V8+XL9+OOPuvPOOzVw4EBt2bLFg5VXvEv1KicnR7GxsbJYLEpLS9N//vMf5efnq2/fvrLZbB6uvmLVr19fM2bM0KZNm7Rx40bdfPPNuuOOO7Rjxw5J0tixY/XZZ59pyZIlWrdunQ4fPqw777zTw1V7xqV6lZubq1tuuUUTJ070cKWeV1KvDh8+rMOHD+ull17S9u3bNX/+fK1cuVLDhw/3dNkecanjql27dpo3b5527typVatWyTAMxcbGqqCgwMOVe8al+lVo9uzZbv2qI6cYKLNjx44Zkox169bZx6pXr2689957DvNq1aplvPPOOxVdXqVyYa9WrVpleHl5GadPn7bPOXXqlGGxWIyUlBRPlVlp1KxZ03j33XeNU6dOGT4+PsaSJUvsz+3cudOQZKSnp3uwwsqjsFd/tWbNGkOScfLkSc8UVUkV16tCH374oeHr62tYrdYKrqpyKqlXP/zwgyHJ2LdvXwVXVXld2K8tW7YYkZGRxpEjRwxJxieffFIhdXDmxg0KT+HWqlXLPtapUyctXrxYJ06ckM1m06JFi3Tu3Dl1797dQ1VWDhf2Ki8vTxaLxeHDnvz9/eXl5aX169d7pMbKoKCgQIsWLVJOTo5iYmK0adMmWa1W9ezZ0z7nqquuUoMGDZSenu7BSj3vwl7h4pzp1enTpxUSEqJq1SrFZ7x6zKV6lZOTo3nz5qlRo0aKioryQIWVS3H9ys3N1eDBgzVnzpwSv9y6XFRIhDKxgoICo0+fPkbnzp0dxk+ePGnExsYakoxq1aoZISEhxqpVqzxUZeVQXK+OHTtmhISEGGPGjDFycnKMs2fPGgkJCYYkY+TIkR6s1jO2bdtmVK9e3fD29jZq1KhhfPHFF4ZhGMa///1vw9fXt8j866+/3hg3blxFl1kpXKxXf8WZmz850yvDMIysrCyjQYMGxsSJEyu4wsrjUr2aM2eOUb16dUOS0bx588v+rE1J/Ro5cqQxfPhw+2Nx5qbqGDVqlLZv365FixY5jE+aNEmnTp3SV199pY0bNyoxMVEDBw7Ujz/+6KFKPa+4XoWFhWnJkiX67LPPFBQUpBo1aujUqVNq27atw3eKXS6aN2+urVu36rvvvtMjjzyioUOH6qeffvJ0WZUSvXKeM73Kzs5Wnz591LJlS02ZMsUzhVYCl+rVvffeqy1btmjdunVq1qyZBg4cqHPnznmwYs+6WL+WL1+utLQ0zZ492zOFVUiEMqlRo0YZ9evXNw4cOOAwvm/fPkOSsX37dofxHj16GA899FBFllhpXKxXf5WVlWX/P+zw8HDjhRdeqKDqKq8ePXoYI0eONFJTU4s9A9GgQQNj1qxZnimukins1V9x5qZ4F/YqOzvbiImJMXr06GH88ccfHqys8inuuCqUl5dnBAYGGgsXLqzgqiqvwn6NGTPGsFgshre3t/1HkuHl5WV069at3Ou4/P7X2A0Mw1BCQoI++eQTpaWlqVGjRg7P5+bmSlKRMw/e3t6X3R1Al+rVX9WpU0ehoaFKS0vTsWPHdPvtt1dgpZWTzWZTXl6e2rVrJx8fH6Wmptqf2717tzIyMrjO5P8r7BUu7a+9ys7OVmxsrHx9fbV8+XL5+/t7uLrKpaTjyjAMGYbBcfcXhf0aP368tm3bpq1bt9p/JOnll1/WvHnzyr2Oy/uKMReNGjVKCxcu1Keffqrg4GAdPXpUklSjRg0FBAToqquuUpMmTfTQQw/ppZdeUu3atbVs2TKlpKTo888/93D1FetSvZKkefPmqUWLFgoLC1N6errGjBmjsWPHqnnz5p4svcJNmDBBvXv3VoMGDXTmzBktXLhQa9eu1apVq1SjRg0NHz5ciYmJqlWrlkJCQvTYY48pJiZGN9xwg6dLr3Al9Ur683Omjh49qn379kmSfvzxRwUHB6tBgwYOF/5fDkrqVWGwyc3N1YIFC5Sdna3s7GxJf75l7O3t7eHqK1ZJvTpw4IAWL16s2NhYhYWF6ddff9WMGTMUEBCgW2+91dOle0RJ/YqIiCj2IuIGDRqU+D+5blPu54ZMSFKxP/PmzbPP2bNnj3HnnXcadevWNQIDA41rr722yK3hlwNnevXUU08Z4eHhho+Pj9G0aVNj5syZhs1m81zRHvLAAw8YDRs2NHx9fY2wsDCjR48exurVq+3P//HHH8ajjz5q1KxZ0wgMDDT69+9vHDlyxIMVe86lepWUlHTJ4+5yUVKvCt+2K+7n4MGDni3cA0rq1W+//Wb07t3bqFu3ruHj42PUr1/fGDx4sLFr1y4PV+05l3odXkgVeEGx5f9vEAAAwBS45gYAAJgK4QYAAJgK4QYAAJgK4QYAAJgK4QYAAJgK4QYAAJgK4QYAAJgK4QZAldG9e3c9/vjjZVrH2rVrZbFYdOrUKbfUBKDyIdwAqDSGDRumfv36eboMAFUc4QYAAJgK4QZApZSTk6MhQ4YoKChI9erV08yZM4vMef/999W+fXsFBwcrIiJCgwcP1rFjxxzmrFixQs2aNVNAQIBuuukmHTp0qMh61q9fr65duyogIEBRUVEaPXq0cnJyymvXAJQzwg2ASunJJ5/UunXr9Omnn2r16tVau3atNm/e7DDHarVq2rRp+uGHH7Rs2TIdOnRIw4YNsz//yy+/6M4771Tfvn21detWjRgxQuPHj3dYx/79+3XLLbforrvu0rZt27R48WKtX79eCQkJFbGbAMoBX5wJoNIYNmyYTp06pQULFqh27dpasGCBBgwYIEk6ceKE6tevr5EjR2r27NnFLr9x40Zdf/31OnPmjIKCgjRx4kR9+umn2rFjh33O+PHj9Y9//EMnT55UaGioRowYIW9vb7311lv2OevXr1e3bt2Uk5Mjf3//ct1nAO7HmRsAlc7+/fuVn5+vjh072sdq1aql5s2bO8zbtGmT+vbtqwYNGig4OFjdunWTJGVkZEiSdu7c6bAOSYqJiXF4/MMPP2j+/PkKCgqy/8TFxclms+ngwYPlsXsAylk1TxcAAK7IyclRXFyc4uLi9O9//1thYWHKyMhQXFyc8vPznV7P2bNn9dBDD2n06NFFnmvQoIE7SwZQQQg3ACqdxo0by8fHR9999509YJw8eVJ79uyxn53ZtWuXjh8/rhkzZigqKkrSn29L/VWLFi20fPlyh7Fvv/3W4XHbtm31008/qUmTJuW1OwAqGG9LAah0goKCNHz4cD355JNKS0vT9u3bNWzYMHl5/e9XVoMGDeTr66vXXntNBw4c0PLlyzVt2jSH9Tz88MPau3evnnzySe3evVsLFy7U/PnzHeY89dRT2rBhgxISErR161bt3btXn376KRcUA1UY4QZApfTiiy+qa9eu6tu3r3r27KkuXbqoXbt29ufDwsI0f/58LVmyRC1bttSMGTP00ksvOayjQYMG+uijj7Rs2TK1bt1aycnJev755x3mXHvttVq3bp327Nmjrl276rrrrtPkyZN1xRVXVMh+AnA/7pYCAACmwpkbAABgKoQbAABgKoQbAABgKoQbAABgKoQbAABgKoQbAABgKoQbAABgKoQbAABgKoQbAABgKoQbAABgKoQbAABgKoQbAABgKv8PsbjJDmbJnl4AAAAASUVORK5CYII=",
+      "text/plain": [
+       "<Figure size 640x480 with 1 Axes>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "image/png": "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bDabevToke99LznnWMKfD0cTkI3OnTvrqaee0oYNG/T555/n2K5ChQpatmyZmjRpkus/qPDwcEk3PqmWL1/ePv7s2bNZzrDcavfu3Tpw4ICmTZumPn362MfffGdVbsLDw+2fkG+2f//+LNsiSSVKlFCrVq3ytOzcFC9eXN7e3nla99dff63U1FQtXLjQ4TLUrZcg7mQ/VqhQQcnJyb9rWw4ePChjjMNZmcwvocvsrBoeHp5leyTp559/dqj5TnXo0EGxsbH673//m68gEx4eroyMDB06dMjhjEl2tc6dO1fR0dEO34F09epVXbx4McsynXEsAbmhjwyQDT8/P8XFxWn06NHq0KFDju26deum9PR0jRs3Lsu069ev2/8RtGrVSu7u7nr//fcdTtvn5c6ZQoUKSZLDfMYYTZgwIU/b0q5dO23YsEGbNm2yjzt79myWs0iRkZEKCAjQv//9b127di3Lcs6ePZun9d1cd2RkpBYsWKBjx47Zx+/bt09Lly7N0lZSlksaU6ZMcWh3J/uxW7duWr9+fZZ1STduy75+/fptt+HkyZP68ssv7Y+TkpI0ffp01a1b136moV27dtq0aZPWr19vb5eSkqJJkyapbNmyql69+m3Xk52IiAi1bdtWn376qRYsWJBlelpamkaMGJHj/Jl33d16p112+6pQoUIO+1OS3n//faWnpzuMc9axBOSGMzJADqKjo2/bpmnTpnrqqacUGxurHTt2qE2bNnJ3d1d8fLzmzJmjCRMm6C9/+YuKFy+uESNGKDY2Vu3bt1e7du20fft2LV68WMWKFct1HVWrVlWFChU0YsQI/frrrwoICNC8efNueyYn08iRIzVjxgy1bdtWzz33nP2W2fDwcO3atcveLiAgQHFxcXriiSdUr1499ejRQ8WLF9exY8f0zTffqEmTJvrggw/ytM5MY8aM0ZIlS/Twww9r4MCBun79ut5//33VqFHDYd1t2rSRh4eHOnTooKeeekrJycn65JNPVKJECZ06dcre7k724/PPP6+FCxeqffv26tu3r+rXr6+UlBTt3r1bc+fO1ZEjR2677ytXrqz+/ftr8+bNKlmypD777DOdPn3aIWC98MIL9tv1hwwZoqJFi2ratGk6fPiw5s2bl+OX3eXF9OnT1aZNGz3++OPq0KGDWrZsKV9fX8XHx2v27Nk6deqUw3fJ3Kxu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Dw9VrFhRklS/fn1t3rxZEyZMUPfu3ZWWlqaLFy86nJU5ffq0QkJCclyep6enPD0973bZAADABTj9jMytMjIylJqaqvr168vd3V3Lly+3T9u/f7+OHTumiIgIJ1YIAABchVPPyMTExCgqKkplypTRpUuXNGvWLK1cuVJLly5VYGCg+vfvr+HDh6to0aIKCAjQ4MGDFRERwR1LAABAkpODzJkzZ9SnTx+dOnVKgYGBql27tpYuXarWrVtLkt555x25ubmpS5cuSk1NVWRkpD788ENnlgwAAFyIU4PM5MmTc53u5eWliRMnauLEifeoIgAAYCUu10cGAAAgrwgyAADAsggyAADAspz+PTIAcC/Vf366s0vATba+2cfZJcDiOCMDAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsi58oyAZfYe5a+ApzAEBOOCMDAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsiyADAAAsy6lBJjY2Vg888ID8/f1VokQJderUSfv373do06xZM9lsNofh6aefdlLFAADAlTg1yKxatUqDBg3Shg0b9P333+vatWtq06aNUlJSHNoNGDBAp06dsg//+c9/nFQxAABwJYWdufIlS5Y4PJ46dapKlCihrVu36pFHHrGP9/HxUUhIyL0uDwAAuDiX6iOTmJgoSSpatKjD+JkzZ6pYsWKqWbOmYmJidPny5RyXkZqaqqSkJIcBAAD8MTn1jMzNMjIyNHToUDVp0kQ1a9a0j+/Vq5fCw8NVqlQp7dq1S//85z+1f/9+zZ8/P9vlxMbGasyYMfeqbAAA4EQuE2QGDRqkn376SWvWrHEY/+STT9r/rlWrlkJDQ9WyZUsdOnRIFSpUyLKcmJgYDR8+3P44KSlJYWFhd69wAADgNC4RZJ599lktWrRIP/74o0qXLp1r20aNGkmSDh48mG2Q8fT0lKen512pEwAAuBanBhljjAYPHqwvv/xSK1euVLly5W47z44d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4+OjevXqFcSiAAAA8izPQWb48OF5Xuj48ePzVQwAAMCdyHOQ2b59u8Pjbdu26fr166pSpYok6cCBAypUqJDq169fsBUCAADkIM9BZsWKFfa/x48fL39/f02bNk1FihSRJP3222/q16+fHn744YKvEgAAIBv5uv367bffVmxsrD3ESDe+T+bVV1/V22+/XWDFAQAA5CZfQSYpKcn+JXg3O3v2rC5duvS7iwIAAMiLfAWZzp07q1+/fpo/f75OnDihEydOaN68eerfv78ef/zxgq4RAAAgW/m6/fqjjz7SiBEj1KtXL127dk3GGLm7u6t///568803C7pGAACAbOUryPj4+OjDDz/Um2++qUOHDkmSKlSoIF9f3wItDgAAIDd3FGTyetlo/vz5+SoGAADgTtxRkAkMDLxbdQAAANyxOwoyU6ZMuVt1AAAA3LF83bUEAADgCggyAADAsggyAADAsggyAADAspwaZH788Ud16NBBpUqVks1m04IFCxym9+3bVzabzWFo27atc4oFAAAux6lBJiUlRXXq1NHEiRNzbNO2bVudOnXKPvzvf/+7hxUCAABXlq9v9i0oUVFRioqKyrWNp6enQkJC8rzM1NRUpaam2h8nJSXluz4AAODaXL6PzMqVK1WiRAlVqVJFzzzzjM6fP59r+9jYWAUGBtqHsLCwe1QpAAC411w6yLRt21bTp0/X8uXL9cYbb2jVqlWKiopSenp6jvPExMQoMTHRPhw/fvweVgwAAO4lp15aup0ePXrY/65Vq5Zq166tChUqaOXKlWrZsmW283h6esrT0/NelQgAAJzIpc/I3Kp8+fIqVqyYDh486OxSAACAC7BUkDlx4oTOnz+v0NBQZ5cCAABcgFMvLSUnJzucXTl8+LB27NihokWLqmjRohozZoy6dOmikJAQHTp0SCNHjlTFihUVGRnpxKoBAICrcGqQ2bJli5o3b25/PHz4cElSdHS04uLitGvXLk2bNk0XL15UqVKl1KZNG40bN44+MAAAQJKTg0yzZs1kjMlx+tKlS+9hNQAAwGos1UcGAADgZgQZAABgWQQZAABgWQQZAABgWQQZAABgWQQZAABgWQQZAABgWQQZAABgWQQZAABgWQQZAABgWQQZAABgWQQZAABgWQQZAABgWQQZAABgWQQZAABgWQQZAABgWQQZAABgWQQZAABgWQQZ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qjJlysjHx0edO3d2CLmZvvrqK9WrV09eXl4qX768xowZc0efFDdv3qzWrVurWLFiCgwMVNOmTbVt2zaHNjabTZ9++qk6d+4sHx8fVapUSQsXLnRo89NPPykqKkp+fn4qWbKknnjiCZ07d84+/dZP4WXLltW4cePUp08fBQQE6Mknn5SUv+P5bsh8jkNCQlS3bl298MILOn78uM6ePWtvc/z4cXXr1k1BQUEqWrSoOnbsmOtrIDU1VUOGDFGJEiXk5eWlhx56qEA/Od/uNWaz2RQXF6fHHntMvr6+eu2117K8nps1a+ZwNipzyNyuY8eOqWPHjvLz81NAQIC6devm8BMxmWf8ZsyYobJlyyowMFA9evTQpUuXJN04C7Fq1SpNmDAhy7Jvdww5U+bxEB4ermeeeUatWrWyvwZ+++039enTR0WKFJGPj4+ioqIUHx9vnzfz7NnChQtVvXp1eXp66m9/+5umTZumr776yr4fVq5cKUnavXu3WrRoIW9vbwUHB+vJJ5/M8r6fnSlTpqh9+/Z65pln9L///U9XruT+q96pqakaMWKE7rvvPvn6+qpRo0b2GjJ98sknCgsLs78HjR8/3uFMYObz/emnn6pcuXLy8vKSdON/3N///ncVL15cAQEBatGihXbu3JmHPX13EGTuAj8/P/n5+WnBggVKTU3NsZ2bm5vee+897dmzR9OmTdMPP/ygkSNH2qdv3bpV3bp1U48ePbR7926NHj1aL7/8sqZOnXpH9Xh7eysjI0PXr19XSkqKhg8fri1btmj58uVyc3NT586dlZGRkd/N1ZdffqnnnntO//jHP/TTTz/pqaeeUr9+/bRixYp8L9NV/PTTT1q3bl2un0J+/fVXtWvXTg888IB27typuLg4TZ48Wa+++mqO82zcuFH9+/fXs88+qx07dqh58+ZZ2q9evVp9+vTRc889p7179+rjjz/W1KlT9dprr+W5/kuXLik6Olpr1qzRhg0bVKlSJbVr187+jyfTmDFj1K1bN+3atUvt2rVT7969deHCBUk33rRatGih+++/X1u2bNGSJUt0+vRpdevWLdd1v/XWW6pTp462b9+ul19+ucCO54KWnJys//73v6pYsaKCg4Ml3TibERkZKX9/f61evVpr166Vn5+f2rZtq7S0tGyXM3LkSM2bN0/Tpk3Ttm3bVLFiRUVGRtr34++R19fY6NGj1blzZ+3evVt/+9vfsixn/vz5OnXqlH14/PHHVaVKFZUsWVIZGRnq2LGjLly4oFWrVun777/XL7/8ou7duzss49ChQ1qwYIEWLVqkRYsWadWqVXr99dclSRMmTFBERIQGDBhgX0dYWFi+jyFn8fb2tj/Pffv21ZYtW7Rw4UKtX79exhi1a9dO165ds7e/fPmy3njjDX366afas2eP3nvvPXXr1k1t27a174fGjRsrJSVFkZGRKlKkiDZv3qw5c+Zo2bJlevbZZ3OtxxijKVOm6K9//auqVq2qihUrau7cubnO8+yzz2r9+vWaPXu2du3apa5du6pt27b2ELZ27Vo9/fTTeu6557Rjxw61bt062/eWgwcPat68eZo/f779w1vXrl115swZLV68WFu3blW9evXUsmXLAjnW8yXX38ZGvs2dO9cUKVLEeHl5mcaNG5uYmBizc+fOXOeZM2eOCQ4Otj/u1auXad26tUOb559/3lSvXj3HZUyZMsUEBgbaHx84cMBUrlzZNGjQINv2Z8+eNZLM7t27jTHGrFixwkgyv/32m73N9u3bjSRz+PDhbNfRuHFjM2DAAIfldu3a1bRr1y63zXVJ0dHRplChQsbX19d4enoaScbNzc3MnTvX3ubw4cNGktm+fbsxxpgXX3zRVKlSxWRkZNjbTJw40fj5+Zn09PRs19OzZ88s+6d79+4O+7Vly5bm3//+t0ObGTNmmNDQ0BzrHzVqlKlTp06O09PT042/v7/5+uuv7eMkmZdeesn+ODk52UgyixcvNsYYM27cONOmTRuH5Rw/ftxIMvv37zfGGNO0aVPz3HPP2aeHh4ebTp06OcyTn+P5brj5Ofb19TWSTGhoqNm6dau9zYwZM7I8p6mpqcbb29ssXbrUvpyOHTsaY27sM3d3dzNz5kx7+7S0NFOqVCnzn//8J8damjZtatzd3e21ZA6enp53/BqTZIYOHerQJrvXc6bx48eboKAg+3P43XffmUKFCpljx47Z2+zZs8dIMps2bTLG3Di+fHx8TFJSkr3N888/bxo1auSwTTcfC8bk7Rhylpufx4yMDPP9998bT09PM2LECHPgwAEjyaxdu9be/ty5c8bb29t88cUXxpgb74eSzI4dO3JcbqZJkyaZIkWKmOTkZPu4b775xri5uZmEhIQca/zuu+9M8eLFzbVr14wx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JaGCPp5/j9TUVCUkJCghIUH79u3T4MGD7WcNpBuXe4oVK6aOHTtq9erVOnz4sFauXKkhQ4Zke7nQ19dXzzzzjJ5//nktWbJEe/fu1YABA3T58uUCOZNXUK+xLl26yMfHR6NHj7Zvf0JCgtLT09WqVSvVqlVLvXv31rZt27Rp0yb16dNHTZs2zfMlK+nGpaeNGzfqyJEjOnfunDIyMgrsGLrXKlWqpI4dO2rAgAFas2aNdu7cqb/+9a+677777O/lOSlbtqx27dql/fv369y5c7p27Zp69+4tLy8vRUdH66efftKKFSs0ePBgPfHEEypZsmS2y5k8ebL+8pe/qGbNmg5D//79de7cuSzvG5JUuXJl9e7dW3369NH8+fN1+PBhbdq0SbGxsfrmm28kSYMHD9a3336r8ePHKz4+Xh9//LEWL1582zNLrVq1UkREhDp16qTvvvtOR44c0bp16/Svf/1LW7ZsyeOeLWBO6ZnzB3f16lXzwgsvmHr16pnAwEDj4+NjqlSpYl566SVz+fJle7vx48eb0NBQ4+3tbSIjI8306dOzdMybO3euqV69unF3dzdlypQxb775Zq7rvrUj7q2+//57U61aNePp6Wlq165tVq5caSSZL7/80t5mzZo1platWsbLy8s8/PDDZs6cObl29jXGmA8//NCUL1/euLu7m8qVK5vp06fndXe5lOw66BljTGxsrClevLhJTk7O0tnXGGNWrlxpHnjgAePh4WFCQkLMP//5T3vHvJxMnjzZlC5d2nh7e5sOHTqYt956K8t+XbJkiWncuLHx9vY2AQEBpmHDhmbSpEk5LvPll1829evXtz/etm2badCggfHy8jKVKlUyc+bMMeHh4eadd96xt7n1+TfGmMDAQDNlyhT74wMHDpjOnTuboKAg4+3tbapWrWqGDh1q7wybXWffm9eR6U6P57shOjraSLIP/v7+5oEHHnDo0G2MMadOnTJ9+vQxxYoVM56enqZ8+fJmwIABJjEx0b6cm4+VK1eumMGDB9vbN2nSxN5JNifZdYw1Jn+vseyex1s7+9683TcPma/to0ePmscee8z4+voaf39/07VrV4dOqNl1Jn/nnXdMeHi4/fH+/fvNgw8+aLy9vR2WfbtjyFlyes1nunDhgnniiSdMYGCg/b36wIED9uk5veeeOXPGtG7d2vj5+RlJZsWKFcYYY3bt2mWaN29uvLy8TNGiRc2AAQPMpUuXsl33li1bHDpb3yoqKsp07tzZGJP1WEpLSzOvvPKKKVu2rHF3dzehoaGmc+fOZteuXfY2kyZNMvfdd5/x9vY2nTp1Mq+++qoJCQmxT8/p5oGkpCQzePBgU6pUKePu7m7CwsJM7969HTqK30s2Y27qDAHA0p5++mmdOHFCixYtcnYpACxmwIAB+vnnn7V69Wpnl3JHuLQE/AFcunRJP/74o+bPn69WrVo5uxwAFvDWW2/Z79B7//33NW3atAL9lvl7hTMywB/AsGHDNHPmTHXu3FkTJkzI811NAP68unXrppUrV+rSpUsqX768Bg8erKefftrZZd0xggwAALAsLi0BAADLIsgAAADLIsgAAADLIsgAAADLIsgAAADLIsgAcAk2my3L78nc7MiRI7LZbLf97a/b6du3rzp16vS7lgHAdRBkANwTCQkJGjx4sMqXLy9PT0+FhYWpQ4cOWr58uaQbP1QaFRXl5CoBWI3r/QwpgD+cI0eOqEmTJgoKCtKbb76pWrVq6dq1a1q6dKkGDRqkn3/+WSEhIc4uE4AFcUYGwF03cOBA2Ww2bdq0SV26dFHlypVVo0YNDR8+XBs2bJCU9dLSpk2bdP/998vLy0sNGjTQ9u3bHZaZnp6u/v37q1y5cvL29laVKlU0YcKELG2GDx+uoKAgBQcHa+TIkbr1O0AzMjIUGxtrX06dOnU0d+7cu7MjABQ4ggyAu+rChQtasmSJBg0aJF9f3yzTg4KCsoxLTk5W+/btVb16dW3dulWjR4/WiBEjHNpkZGSodOnSmjNnjvbu3atXXnlFL774or744gt7m7fffltTp07VZ599pjVr1ujChQv68ssvHZYTGxur6dOn66OPPtKePXs0bNgw/fWvf9WqVasKZgcAuKu4tATgrjp48KCMMapatWqe55k1a5YyMjI0efJkeXl5qUaNGjpx4oSeeeYZext3d3eNGTPG/rhcuXJav369vvjiC3Xr1k2S9O677yomJkaPP/64JOmjjz7S0qVL7fOkpqbq3//+t5YtW6aIiAhJUvny5bVmzRp9/PHHatq06e/adgB3H0EGwF2Vn59z27dvn2rXru3w45eZQeNmEydO1GeffaZjx47pypUrSktLU926dSVJiYmJOnXqlBo1amRvX7hwYTVo0MBe08GDB3X58mW1bt3aYblpaWm6//7777huAPceQQbAXVWpUiXZbDb9/PPPBbrc2bNna8SIEXr77bcVEREhf39/vfnmm9q4cWOel5GcnCxJ+uabb3Tfffc5TPP09CzQegHcHfSRAXBXFS1aVJGRkZo4caJSUlKyTL948WKWcdWqVdOuXbt09epV+7jMTsGZ1q5dq8aNG2vgwIG6//77VbFiRR06dMg+PTAwUKGhoQ7B5vr169q6dav9cfXq1eXp6aljx46pYsWKDkNYWNjv2WwA9whBBsBdN3HiRKWnp6thw4aaN2+e4uPjtW/fPr333nvZXjLq1auXbDabBgwYoL179+rbb7/VW2+95dCmUqVK2rJli5YuXaoDBw7o5Zdf1ubNmx3aPPfcc3r99de1YMEC/fzzzxo4cKBDcPL399eIESM0bNgwTZs2TYcOHdK2bdv0/vvva9q0aXdlXwAoWFxaAnDXlS9fXtu2bdNrr72mf/zjHzp16pSKFy+u+vXrKy4uLkt7Pz8/ff3113r66ad1//33q3r16nrjjTfUpUsXe5unnnpK27dvV/fu3WWz2dSzZ08NHDhQixcvtrfJXFd0dLTc3Nz0t7/9TZ07d1ZiYqK9zbhx41S8eHHFxsbql19+UVBQkOrVq6cXX3zx7u4UAAXCZvLTEw8AAMAFcGkJAABYFkEGAABYFkEGAABYFkEGAABYFkEGAABYFkEGAABYFkEGAABYFkEGAABYFkEGAABYFkEGAABYFkEGAABY1v8DqHfZaT/X6vYAAAAASUVORK5CYII=",
+      "text/plain": [
+       "<Figure size 640x480 with 1 Axes>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns\n",
+    "\n",
+    "# Histograma\n",
+    "df['Idade'].hist()\n",
+    "plt.title('Distribuição de Idades')\n",
+    "plt.xlabel('Idade')\n",
+    "plt.ylabel('Frequência')\n",
+    "plt.show()\n",
+    "\n",
+    "# Gráfico de barras\n",
+    "sns.barplot(x='Cidade', y='Idade', data=df)\n",
+    "plt.title('Média de Idade por Cidade')\n",
+    "plt.show()"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
