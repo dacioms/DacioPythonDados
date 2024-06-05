@@ -1,0 +1,176 @@
+id_venda,data_venda,produto,modelo_produto,quantidade_vendida,preco_unitario,total_venda,vendedor,id_cliente,nome,idade,email,telefone,data_inscricao
+1,2023-01-15,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,1,João Souza,25,joao.souza@example.com,+55 21 98765-4321,2022-12-01
+2,15/01/2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,2,Maria Oliveira,30,maria.oliveira@example.com,+55 21 98765-4322,2022-12-02
+3,2023/01/16,Tablet,iPad Air,3,5000.00,15000.00,Beatriz Rocha,3,Carlos Pereira,35,carlos.pereira@example..com,+55 21 98765-4323,2022-12-03
+4,2023-01-17,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,4,Ana Costa,40,ana.costa@example.com,+55 21 98765-4324,2022-12-04
+5,2023-01-18,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,5,Pedro Santos,,pedro.santos@example.com,,2022-12-05
+6,2023-01-19,Headphone,Beats Studio,3,1500.00,4500.00,Laura Almeida,6,Paulo Rodrigues,45,paulo.rodrigues@example.com,+55 21 98765-4326,2022-12-06
+7,2023-01-20,Camera,Canon EOS R,4,7000.00,28000.00,Fernanda Costa,7,Fernando Lima,50,fernando.lima@example.com,+55 21 98765-4327,2022-12-07
+8,2023-01-21,Drone,DJI Mavic Air,1,5000.00,5000.00,José Alves,8,Roberta Sousa,55,roberta.sousa@example.com,+55 21 98765-4328,2022-12-08
+9,2023-01-22,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,9,Marcos Oliveira,60,marcos.oliveira@example.com,+55 21 98765-4329,2022-12-09
+10,22-01-2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,10,Juliana Ferreira,65,juliana.ferreira@example.com,+55 21 98765-4330,2022-12-10
+11,2023-01-23,Tablet,iPad Air,3,5000.00,15000.00,Beatriz Rocha,11,Bruno Alves,70,bruno.alves@example..com,+55 21 98765-4331,2022-12-11
+12,2023-01-24,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,12,Lucas Rocha,75,lucas.rocha@example.com,+55 21 98765-4332,2022-12-12
+13,2023-01-25,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,13,Fabiana Costa,,fabiana.costa@example.com,+55 21 98765-4333,2022-12-13
+14,2023-01-26,Headphone,Beats Studio,3,1500.00,4500.00,Laura Almeida,14,Thiago Souza,45,thiago.souza@example.com,+55 21 98765-4334,2022-12-14
+15,2023-01-27,Camera,Canon EOS R,4,7000.00,28000.00,Fernanda Costa,15,Rafael Lima,50,rafael.lima@example.com,+55 21 98765-4335,2022-12-15
+16,2023-01-28,Drone,DJI Mavic Air,1,5000.00,5000.00,José Alves,16,Patrícia Santos,55,patricia.santos@example.com,+55 21 98765-4336,2022-12-16
+17,2023-01-29,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,17,Gabriel Almeida,60,gabriel.almeida@example.com,+55 21 98765-4337,2022-12-17
+18,29/01/2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,18,Isabela Rodrigues,65,isabela.rodrigues@example.com,+55 21 98765-4338,2022-12-18
+19,2023-01-30,Tablet,iPad Air,3,5000.00,15000.00,Beatriz Rocha,19,Roberto Costa,70,roberto.costa@example..com,+55 21 98765-4339,2022-12-19
+20,2023-01-31,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,20,Vanessa Santos,75,vanessa.santos@example.com,+55 21 98765-4340,2022-12-20
+21,2023-02-01,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,21,Henrique Lima,,henrique.lima@example.com,+55 21 98765-4341,2022-12-21
+22,2023-02-02,Headphone,Beats Studio,3,1500.00,4500.00,Laura Almeida,22,André Oliveira,45,andre.oliveira@example.com,+55 21 98765-4342,2022-12-22
+23,2023-02-03,Camera,Canon EOS R,4,7000.00,28000.00,Fernanda Costa,23,Fábio Souza,50,fabio.souza@example.com,+55 21 98765-4343,2022-12-23
+24,2023-02-04,Drone,DJI Mavic Air,1,5000.00,5000.00,José Alves,24,Daniel Ferreira,55,daniel.ferreira@example.com,+55 21 98765-4344,2022-12-24
+25,2023-02-05,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,25,Sandra Lima,60,sandra.lima@example.com,+55 21 98765-4345,2022-12-25
+26,05/02/2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,26,Paula Costa,65,paula.costa@example.com,+55 21 98765-4346,2022-12-26
+27,2023-02-06,Tablet,iPad Air,3,5000.00,15000.00,Beatriz Rocha,27,Leandro Almeida,70,leandro.almeida@example..com,+55 21 98765-4347,2022-12-27
+28,2023-02-07,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,28,Flávia Rocha,75,flavia.rocha@example.com,+55 21 98765-4348,2022-12-28
+29,2023-02-08,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,29,Camila Rodrigues,,camila.rodrigues@example.com,+55 21 98765-4349,2022-12-29
+29,2023-02-08,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,29,Camila Rodrigues,,camila.rodrigues@example.com,+55 21 98765-4349,2022-12-29
+30,2023-02-09,Headphone,Beats Studio,3,1500.00,4500.00,,30,Ricardo Lima,45,ricardo.lima@example.com,+55 21 98765-4350,2022-12-30
+31,2023-02-10,Camera,Canon EOS R,4,7000.00,28000.00,Fernanda Costa,31,Adriana Souza,50,adriana.souza@example.com,+55 21 98765-4351,2022-12-31
+32,2023-02-11,Drone,DJI Mavic Air,1,5000.00,5000.00,José Alves,32,José Ferreira,55,jose.ferreira@example.com,+55 21 98765-4352,2023-01-01
+33,2023-02-12,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,33,Cristina Lima,60,cristina.lima@example.com,+55 21 98765-4353,2023-01-02
+34,12/02/2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,34,Leonardo Costa,65,leonardo.costa@example.com,+55 21 98765-4354,2023-01-03
+35,2023-02-13,Tablet,iPad Air,3,5000.00,15000.00,Beatriz Rocha,35,Cláudia Almeida,70,claudia.almeida@example..com,+55 21 98765-4355,2023-01-04
+36,2023-02-14,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,36,Renata Rocha,75,renata.rocha@example.com,+55 21 98765-4356,2023-01-05
+37,2023-02-15,Console,PlayStation 5,2,5000.00,100000.00,Ricardo Ferreira,37,Luciana Rodrigues,,luciana.rodrigues@example.com,+55 21 98765-4357,2023-01-06
+38,2023-02-16,Headphone,Beats Studio,3,1500.00,4500.00,Laura Almeida,38,Mariana Lima,45,mariana.lima@example.com,+55 21 98765-4358,2023-01-07
+39,2023-02-17,Camera,Canon EOS R,4,7000.00,28000.00,Fernanda Costa,39,Felipe Souza,50,felipe.souza@example.com,+55 21 98765-4359,2023-01-08
+40,2023-02-18,Drone,DJI Mavic Air,1,5000.00,5000.00,José Alves,40,Daniela Ferreira,55,daniela.ferreira@example.com,+55 21 98765-4360,2023-01-09
+41,2023-02-19,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,41,Carla Lima,60,carla.lima@example.com,+55 21 98765-4361,2023-01-10
+42,19/02/2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,42,Rodrigo Costa,65,rodrigo.costa@example.com,+55 21 98765-4362,2023-01-11
+43,2023-02-20,Tablet,iPad Air,3,5000.00,1000.00,Beatriz Rocha,43,Francisco Almeida,70,francisco.almeida@example..com,+55 21 98765-4363,2023-01-12
+44,2023-02-21,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,44,Juliana Rocha,75,juliana.rocha@example.com,+55 21 98765-4364,2023-01-13
+45,2023-02-22,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,45,Fernando Rodrigues,,fernando.rodrigues@example.com,+55 21 98765-4365,2023-01-14
+46,2023-02-23,Headphone,Beats Studio,3,1500.00,4500.00,Laura Almeida,46,Rafaela Lima,45,rafaela.lima@example.com,+55 21 98765-4366,2023-01-15
+47,2023-02-24,Camera,Canon EOS R,4,7000.00,28000.00,Fernanda Costa,47,Ana Souza,50,ana.souza@example.com,+55 21 98765-4367,2023-01-16
+48,2023-02-25,Drone,DJI Mavic Air,1,5000.00,5000.00,José Alves,48,Fábio Ferreira,55,fabio.ferreira@example.com,+55 21 98765-4368,2023-01-17
+49,2023-02-26,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,49,Alessandra Lima,60,alessandra.lima@example.com,+55 21 98765-4369,2023-01-18
+50,26/02/2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,50,Marcelo Costa,65,marcelo.costa@example.com,+55 21 98765-4370,2023-01-19
+51,2023-02-27,Tablet,iPad Air,3,5000.00,15000.00,Beatriz Rocha,51,Mariana Almeida,70,mariana.almeida@example..com,+55 21 98765-4371,2023-01-20
+52,2023-02-28,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,52,Rafael Rocha,75,rafael.rocha@example.com,+55 21 98765-4372,2023-01-21
+53,2023-03-01,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,53,Renato Rodrigues,,renato.rodrigues@example.com,+55 21 98765-4373,2023-01-22
+54,2023-03-02,Headphone,Beats Studio,3,1500.00,4500.00,Laura Almeida,54,Rosa Lima,45,rosa.lima@example.com,+55 21 98765-4374,2023-01-23
+55,2023-03-03,Camera,Canon EOS R,4,7000.00,28000.00,Fernanda Costa,55,Bruna Souza,50,bruna.souza@example.com,+55 21 98765-4375,2023-01-24
+56,2023-03-04,Drone,DJI Mavic Air,1,5000.00,5000.00,José Alves,56,Pedro Ferreira,55,pedro.ferreira@example.com,+55 21 98765-4376,2023-01-25
+57,2023-03-05,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,57,Larissa Lima,60,larissa.lima@example.com,+55 21 98765-4377,2023-01-26
+58,05/03/2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,58,Isabela Costa,65,isabela.costa@example.com,+55 21 98765-4378,2023-01-27
+59,2023-03-06,Tablet,iPad Air,3,5000.00,15000.00,Beatriz Rocha,59,Paulo Almeida,70,paulo.almeida@example..com,+55 21 98765-4379,2023-01-28
+60,2023-03-07,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,60,Simone Rocha,75,simone.rochaexample.com,+55 21 98765-4380,2023-01-29
+61,2023-03-08,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,61,Luis Rodrigues,,luis.rodrigues@example.com,+55 21 98765-4381,2023-01-30
+62,2023-03-09,Headphone,Beats Studio,3,1500.00,4500.00,Laura Almeida,62,Murilo Lima,45,murilo.lima@example.com,+55 21 98765-4382,2023-01-31
+63,2023-03-10,Camera,Canon EOS R,4,7000.00,28000.00,Fernanda Costa,63,Renata Souza,50,renata.souza@example.com,+55 21 98765-4383,2023-02-01
+64,2023-03-11,Drone,DJI Mavic Air,1,5000.00,5000.00,José Alves,64,Fernando Ferreira,55,fernando.ferreira@example.com,+55 21 98765-4384,2023-02-02
+65,2023-03-12,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,65,Rafael Lima,60,rafael.lima@example.com,+55 21 98765-4385,2023-02-03
+66,12/03/2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,66,Aline Costa,65,aline.costa@example.com,+55 21 98765-4386,2023-02-04
+67,2023-03-13,Tablet,iPad Air,3,5000.00,15000.00,Beatriz Rocha,67,Gustavo Almeida,70,gustavo.almeida@example..com,+55 21 98765-4387,2023-02-05
+68,2023-03-14,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,68,Natalia Rocha,75,natalia.rocha@example.com,+55 21 98765-4388,2023-02-06
+69,2023-03-15,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,69,Julio Rodrigues,,julio.rodrigues@example.com,+55 21 98765-4389,2023-02-07
+70,2023-03-16,Headphone,Beats Studio,3,1500.00,4500.00,Laura Almeida,70,Clara Lima,45,clara.lima@example.com,+55 21 98765-4390,2023-02-08
+71,2023-03-17,Camera,Canon EOS R,4,7000.00,28000.00,Fernanda Costa,71,Alberto Souza,50,alberto.souza@example.com,+55 21 98765-4391,2023-02-09
+72,2023-03-18,Drone,DJI Mavic Air,1,5000.00,5000.00,José Alves,72,Francisca Ferreira,55,francisca.ferreira@example.com,+55 21 98765-4392,2023-02-10
+73,2023-03-19,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,73,Marcela Lima,60,marcela.lima@example.com,+55 21 98765-4393,2023-02-11
+74,19/03/2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,74,Victor Costa,65,victor.costa@example.com,+55 21 98765-4394,2023-02-12
+75,2023-03-20,Tablet,,3,5000.00,15000.00,Beatriz Rocha,75,Patricia Almeida,70,patricia.almeida@example..com,+55 21 98765-4395,2023-02-13
+76,2023-03-21,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,76,Andrea Rocha,75,andrea.rocha@example.com,+55 21 98765-4396,2023-02-14
+77,2023-03-22,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,77,Miguel Rodrigues,,miguel.rodrigues@example.com,+55 21 98765-4397,2023-02-15
+78,2023-03-23,Headphone,Beats Studio,3,1500.00,4500.00,Laura Almeida,78,Bianca Lima,45,bianca.lima@example.com,+55 21 98765-4398,2023-02-16
+79,2023-03-24,Camera,Canon EOS R,4,7000.00,28000.00,Fernanda Costa,79,Thiago Souza,50,thiago.souza@example.com,+55 21 98765-4399,2023-02-17
+80,2023-03-25,Drone,DJI Mavic Air,1,5000.00,5000.00,José Alves,80,Sonia Ferreira,55,sonia.ferreira@example.com,+55 21 98765-4400,2023-02-18
+81,2023-03-26,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,81,Livia Lima,60,livia.lima@example.com,+55 21 98765-4401,2023-02-19
+82,26/03/2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,82,Felipe Costa,65,felipe.costa@example.com,+55 21 98765-4402,2023-02-20
+83,2023-03-27,Tablet,iPad Air,3,5000.00,15000.00,Beatriz Rocha,83,Roberta Almeida,70,roberta.almeida@example..com,+55 21 98765-4403,2023-02-21
+84,2023-03-28,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,84,Fernanda Rocha,75,fernanda.rocha@example.com,+55 21 98765-4404,2023-02-22
+85,2023-03-29,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,85,Lucas Rodrigues,,lucas.rodrigues@example.com,+55 21 98765-4405,2023-02-23
+86,2023-03-30,Headphone,Beats Studio,3,1500.00,4500.00,Laura Almeida,86,Marcio Lima,45,marcio.lima@example.com,+55 21 98765-4406,2023-02-24
+87,2023-03-31,Camera,Canon EOS R,4,7000.00,28000.00,Fernanda Costa,87,Gisele Souza,50,gisele.souza@example.com,+55 21 98765-4407,2023-02-25
+88,2023-04-01,Drone,DJI Mavic Air,1,5000.00,5000.00,José Alves,88,Gabriela Ferreira,55,gabriela.ferreira@example.com,+55 21 98765-4408,2023-02-26
+89,2023-04-02,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,89,Luciano Lima,60,luciano.lima@example.com,+55 21 98765-4409,2023-02-27
+90,02/04/2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,90,Monica Costa,65,monica.costa@example.com,+55 21 98765-4410,2023-02-28
+91,2023-04-03,Tablet,iPad Air,3,5000.00,15000.00,Beatriz Rocha,91,Roberto Almeida,70,roberto.almeida@example..com,+55 21 98765-4411,2023-03-01
+92,2023-04-04,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,92,Suzana Rocha,75,suzana.rocha@example.com,+55 21 98765-4412,2023-03-02
+93,2023-04-05,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,93,Renato Rodrigues,,renato.rodrigues@example.com,+55 21 98765-4413,2023-03-03
+94,2023-04-06,Headphone,Beats Studio,3,1500.00,4500.00,Laura Almeida,94,Ricardo Lima,45,ricardo.lima@example.com,+55 21 98765-4414,2023-03-04
+95,23-04-07,Camera,Canon EOS R,4,7000.00,28000.00,Fernanda Costa,95,Camila Souza,50,camila.souza@example.com,+55 21 98765-4415,2023-03-05
+96,2023-04-08,Drone,DJI Mavic Air,1,5000.00,5000.00,José Alves,96,Julio Ferreira,55,julio.ferreira@example.com,+55 21 98765-4416,2023-03-06
+97,2023-04-09,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,97,Simone Lima,60,simone.lima@example.com,+55 21 98765-4417,2023-03-07
+98,09/04/2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,98,Marcos Costa,65,marcos.costa@example.com,+55 21 98765-4418,2023-03-08
+99,2023-04-10,Tablet,iPad Air,3,5000.00,15000.00,Beatriz Rocha,99,André Almeida,70,andre.almeida@example..com,+55 21 98765-4419,2023-03-09
+100,2023-04-11,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,100,Julia Rocha,75,julia.rocha@example.com,+55 21 98765-4420,2023-03-10
+101,2023-04-12,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,101,Fernando Rodrigues,,fernando.rodrigues@example.com,+55 21 98765-4421,2023-03-11
+102,2023-04-13,Headphone,Beats Studio,3,1500.00,4500.00,Laura Almeida,102,Luana Lima,45,luana.lima@example.com,+55 21 98765-4422,2023-03-12
+103,2023-04-14,Camera,Canon EOS R,4,7000.00,28000.00,Fernanda Costa,103,Matheus Souza,50,matheus.souza@example.com,+55 21 98765-4423,2023-03-13
+104,2023-04-15,Drone,DJI Mavic Air,1,5000.00,5000.00,José Alves,104,Natália Ferreira,55,natalia.ferreira@example.com,+55 21 98765-4424,2023-03-14
+105,2023-04-16,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,105,Fernanda Lima,60,fernanda.lima@example.com,+55 21 98765-4425,2023-03-15
+106,16/04/2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,106,Mário Costa,65,mario.costa@example.com,+55 21 98765-4426,2023-03-16
+107,2023-04-17,Tablet,iPad Air,3,5000.00,15000.00,Beatriz Rocha,107,Laura Almeida,70,laura.almeida@example..com,+55 21 98765-4427,2023-03-17
+108,2023-04-18,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,108,Marcelo Rocha,75,marcelo.rocha@example.com,+55 21 98765-4428,2023-03-18
+109,2023-04-19,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,109,Ricardo Rodrigues,,ricardo.rodrigues@example.com,+55 21 98765-4429,2023-03-19
+110,2023-04-20,Headphone,Beats Studio,3,1500.00,4500.00,Laura Almeida,110,Roberta Lima,45,roberta.lima@example.com,+55 21 98765-4430,2023-03-20
+111,2023-04-21,Camera,Canon EOS R,4,7000.00,28000.00,Fernanda Costa,111,Felipe Souza,50,felipesouzaexamplecom,+55 21 98765-4431,2023-03-21
+112,2023-04-22,Drone,DJI Mavic Air,1,5000.00,5000.00,José Alves,112,Beatriz Ferreira,55,beatriz.ferreira@example.com,+55 21 98765-4432,2023-03-22
+113,2023-04-23,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,113,Lucas Lima,60,lucas.lima@example.com,+55 21 98765-4433,2023-03-23
+114,23/04/2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,114,Sara Costa,65,sara.costa@example.com,+55 21 98765-4434,2023-03-24
+115,2023-04-24,Tablet,iPad Air,3,5000.00,15000.00,Beatriz Rocha,115,Renato Almeida,70,renato.almeida@example..com,+55 21 98765-4435,2023-03-25
+116,2023-04-25,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,116,Isabel Rocha,75,isabel.rocha@example.com,+55 21 98765-4436,2023-03-26
+117,2023-04-26,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,117,Pedro Rodrigues,,pedro.rodrigues@example.com,+55 21 98765-4437,2023-03-27
+118,2023-04-27,Headphone,Beats Studio,3,1500.00,4500.00,Laura Almeida,118,Rita Lima,45,rita.lima@example.com,+55 21 98765-4438,2023-03-28
+119,2023-04-28,Camera,Canon EOS R,4,7000.00,28000.00,Fernanda Costa,119,Carla Souza,50,carla.souza@example.com,+55 21 98765-4439,2023-03-29
+120,2023-04-29,Drone,DJI Mavic Air,1,5000.00,5000.00,José Alves,120,Alessandro Ferreira,55,alessandro.ferreira@example.com,+55 21 98765-4440,2023-03-30
+121,2023-04-30,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,121,Sabrina Lima,60,sabrina.lima@example.com,+55 21 98765-4441,2023-03-31
+122,30/04/2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,122,Matheus Costa,65,matheus.costa@example.com,+55 21 98765-4442,2023-04-01
+123,2023-05-01,Tablet,iPad Air,3,5000.00,15000.00,Beatriz Rocha,123,Danilo Almeida,70,danilo.almeida@example..com,+55 21 98765-4443,2023-04-02
+124,2023-05-02,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,124,Clarissa Rocha,75,clarissa.rocha@example.com,+55 21 98765-4444,2023-04-03
+125,2023-05-03,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,125,Henrique Rodrigues,,henrique.rodrigues@example.com,+55 21 98765-4445,2023-04-04
+126,2023-05-04,Headphone,Beats Studio,3,1500.00,4500.00,Laura Almeida,126,Vinícius Lima,45,vinicius.lima@example.com,+55 21 98765-4446,2023-04-05
+127,2023-05-05,Camera,Canon EOS R,4,7000.00,28000.00,Fernanda Costa,127,Regina Souza,50,regina.souza@example.com,+55 21 98765-4447,2023-04-06
+128,2023-05-06,Drone,DJI Mavic Air,1,5000.00,5000.00,José Alves,128,Fabio Ferreira,55,fabio.ferreira@example.com,+55 21 98765-4448,2023-04-07
+129,2023-05-07,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,129,Rosa Lima,60,rosa.lima@example.com,+55 21 98765-4449,2023-04-08
+130,07/05/2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,130,Miguel Costa,65,miguel.costa@example.com,+55 21 98765-4450,2023-04-09
+131,2023-05-08,Tablet,iPad Air,3,5000.00,15000.00,Beatriz Rocha,131,Lucas Almeida,70,lucas.almeida@example..com,+55 21 98765-4451,2023-04-10
+132,2023-05-09,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,132,Renata Rocha,75,renata.rocha@example.com,+55 21 98765-4452,2023-04-11
+133,2023-05-10,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,133,Gustavo Rodrigues,,gustavo.rodrigues@example.com,+55 21 98765-4453,2023-04-12
+134,2023-05-11,Headphone,Beats Studio,3,1500.00,4500.00,Laura Almeida,134,Marina Lima,45,marina.lima@example.com,+55 21 98765-4454,2023-04-13
+135,2023-05-12,Camera,Canon EOS R,4,7000.00,28000.00,Fernanda Costa,135,João Souza,50,joao.souza@example.com,+55 21 98765-4455,2023-04-14
+136,2023-05-13,Drone,DJI Mavic Air,1,5000.00,5000.00,José Alves,136,Larissa Ferreira,55,larissa.ferreira@example.com,+55 21 98765-4456,2023-04-15
+137,2023-05-14,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,137,Aline Lima,60,aline.lima@example.com,+55 21 98765-4457,2023-04-16
+138,14/05/2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,138,Roberto Costa,65,roberto.costa@example.com,+55 21 98765-4458,2023-04-17
+139,2023-05-15,Tablet,iPad Air,3,5000.00,15000.00,Beatriz Rocha,139,Patricia Almeida,70,patricia.almeida@example..com,+55 21 98765-4459,2023-04-18
+140,,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,140,Camila Rocha,75,camila.rocha@example.com,+55 21 98765-4460,2023-04-19
+141,2023-05-17,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,141,Rafaela Rodrigues,,rafaela.rodrigues@example.com,+55 21 98765-4461,2023-04-20
+142,2023-05-18,Headphone,Beats Studio,3,1500.00,4500.00,Laura Almeida,142,Felipe Lima,45,felipe.lima@example.com,+55 21 98765-4462,2023-04-21
+143,2023-05-19,Camera,Canon EOS R,4,7000.00,28000.00,Fernanda Costa,143,Gustavo Souza,50,gustavo.souza@example.com,+55 21 98765-4463,2023-04-22
+144,2023-05-20,Drone,DJI Mavic Air,1,5000.00,5000.00,José Alves,144,Marcelo Ferreira,55,marcelo.ferreira@example.com,+55 21 98765-4464,2023-04-23
+145,2023-05-21,Smartphone,Galaxy S21,2,3000.00,6000.00,Ana Silva,145,Fabiana Lima,60,fabiana.lima@example.com,+55 21 98765-4465,2023-04-24
+146,21/05/2023,Laptop,MacBook Pro,1,15000.00,15000.00,Carlos Lima,146,Cristiano Costa,65,cristiano.costa@example.com,+55 21 98765-4466,2023-04-25
+147,2023-05-22,Tablet,iPad Air,3,5000.00,15000.00,Beatriz Rocha,147,Ana Almeida,70,ana.almeida@example..com,+55 21 98765-4467,2023-04-26
+148,2023-05-23,Smartwatch,Apple Watch,1,,3000.00,Mariana Gomes,148,Paulo Rocha,75,paulo.rocha@example.com,+55 21 98765-4468,2023-04-27
+149,2023-05-24,Console,PlayStation 5,2,5000.00,10000.00,Ricardo Ferreira,149,Rodrigo Rodrigues,,rodrigo.rodrigues@example.com,+55 21 98765-4469,2023-04-28
+150,2023-05-25,Headphone,Beats Studio,3,1500.00,4500.00,Laura Almeida,150,Flávia Lima,45,flavia.lima@example.com,+55 21 98765-4470,2023-04-29
+1,2023-10-18,Câmera,Intelbras,2,899.9,Carlos Ferreira,35,Cliente 39,35,(30) 95895-2580,2023-01-10,cliente39@hotmail.com,1799.8
+2,2023-10-16,Smartphone,Logitech MX Master 3,4,3299.0,Juliana Castro,49,Cliente 34,40,(63) 92908-4890,2022-03-10,cliente34@hotmail.com,13196.0
+3,2023-08-29,Roteador,MacBook Air M2,5,4499.9,Fernanda Souza,4,Cliente 37,45,(81) 94200-5420,2023-11-21,cliente37@hotmail.com,22499.5
+4,2023-04-11,Echo Dot,Intelbras,5,499.9,Marcos Oliveira,4,Cliente 9,33,(73) 93840-4222,2023-05-29,cliente9@yahoo.com,2499.5
+5,2023-04-01,Smart Lâmpada,Elden Ring,3,799.9,Ana Silva,31,Cliente 24,30,(18) 91219-4847,2022-11-19,cliente24@hotmail.com,2399.7
+6,2023-11-29,Microfone,TP-Link Archer AX6000,5,2499.0,Fernanda Souza,21,Cliente 4,63,(69) 99722-5505,2022-11-02,cliente4@yahoo.com,12495.0
+7,2023/04/08,Console,Sony Alpha a7 IV,3,199.9,Juliana Castro,24,Cliente 53,62,(27) 94029-8219,2022-01-05,cliente53@hotmail.com,599.7
+8,2023-04-23,Notebook,Dell UltraSharp,4,899.9,Gustavo Almeida,46,Cliente 37,32,(42) 91482-8848,2023-05-13,cliente37@yahoo.com,3599.6
+9,2023-03-05,Projetor,Sony Alpha a7 IV,1,799.9,Juliana Castro,9,Cliente 55,46,(12) 93020-7914,2022-05-14,cliente55@outlook.com,799.9
+10,2023-11-12,Mesa Gamer,Dell UltraSharp,2,349.9,Fernanda Souza,27,Cliente 27,65,(55) 96201-8943,2023-06-27,cliente27@outlook.com,699.8
+11,2023-03-02,Kindle,MacBook Air M2,3,349.9,Marcos Oliveira,13,Cliente 37,60,(79) 93684-1380,2022-09-09,cliente37@hotmail.com,1049.6999999999998
+12,2023-08-08,Notebook,Seagate Expansion,1,499.9,Juliana Castro,18,Cliente 6,47,(44) 95040-8046,2023-04-02,cliente6@gmail.com,499.9
+13,2023-01-25,Smart Plug,Sony Alpha a7 IV,5,5499.0,Bianca Lima,7,Cliente 32,50,(84) 95019-6453,2023-08-11,cliente32@gmail.com,27495.0
+14,2023-04-23,Impressora 3D,Logitech C922,3,4499.9,Bianca Lima,38,Cliente 47,45,(45) 99307-6229,2023-07-09,cliente47@outlook.com,13499.699999999999
+15,2023-01-08,Projetor,Intelbras,5,899.9,Juliana Castro,55,Cliente 16,23,(30) 91505-1021,2023-09-22,cliente16@hotmail.com,4499.5
+16,2023-06-12,Webcam,MacBook Air M2,2,349.9,Pedro Almeida,31,Cliente 1,54,(13) 96642-8208,2023-10-18,cliente1@outlook.com,699.8
+17,2023-05-19,Roteador,Elden Ring,1,499.9,Carlos Ferreira,15,Cliente 42,41,(99) 93954-4393,2022-04-05,cliente42@yahoo.com,499.9
+18,2023-05-28,Caixa de Som,Positivo Casa Inteligente,5,599.9,Juliana Castro,52,Cliente 2,27,(63) 97320-2216,2022-01-10,cliente2@outlook.com,2999.5
+19,2023-12-06,Projetor,Sony Alpha a7 IV,2,799.9,Marcos Oliveira,47,Cliente 24,64,(52) 92174-1334,2023-01-08,cliente24@yahoo.com,1599.8
+20,2023-09-15,Cadeira Gamer,Logitech C922,1,1599.0,Carlos Ferreira,48,Cliente 56,44,(38) 93152-7880,2022-12-14,cliente56@yahoo.com,1599.0
+21,2023-02-09,Drone,MacBook Air M2,5,299.9,Carlos Ferreira,48,Cliente 8,48,(47) 99414-9801,2022-10-12,cliente8@gmail.com,1499.5
+22,2023/01/11,Microfone,HyperX QuadCast,3,11999.9,Pedro Almeida,9,Cliente 48,46,(47) 97400-7387,2023-08-28,cliente48@yahoo.com,35999.7
+23,2023/08/11,Caixa de Som,Apple Watch Series 8,2,1799.9,Marcos Oliveira,29,Cliente 36,22,(55) 97147-7547,2023-01-25,cliente36
+1,2023-10-18,Câmera,Intelbras,2,899.9,Carlos Ferreira,35,Cliente 39,35,(30) 95895-2580,2023-01-10,cliente39@hotmail.com,1799.8
