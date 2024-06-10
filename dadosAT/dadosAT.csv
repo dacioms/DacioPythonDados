@@ -1,0 +1,11 @@
+id,nome_completo,data_nascimento,email,cidade,estado,consoles,jogos_preferidos
+1,João Silva,1985-07-20,joao.silva@example.com,Rio de Janeiro,RJ,PS5|Xbox Series X,The Last of Us|Halo Infinite|FIFA 21|Cyberpunk 2077|GTA V
+2,Maria Oliveira,1990-11-05,maria.oliveira@example,Curitiba,PR,PS4|Switch,Zelda Breath of the Wild|Uncharted 4|Mario Kart 8|Animal Crossing|Overwatch
+3,Pedro Souza,1978-03-15,pedro.souza@example.com,Salvador,BA,Xbox One|PS5,Red Dead Redemption 2|Forza Horizon 4|Spider-Man|Bloodborne|Fortnite
+4,Ana Costa,2000-02-30,ana.costa@example.com,Fortaleza,CE,Switch|PS4,Super Mario Odyssey|The Witcher 3|Metroid Dread|Hades|Splatoon 2
+5,Luiz Pereira,1982-08-19,luiz.pereira,Belo Horizonte,MG,PS5|Xbox Series X,Assassin's Creed Valhalla|Doom Eternal|Resident Evil Village|Sekiro|Control
+6,João Silva,1985-07-20,joao.silva@example.com,Rio de Janeiro,RJ,PS5|Xbox Series X,The Last of Us|Halo Infinite|FIFA 21|Cyberpunk 2077|GTA V
+7,Clara Mendes,1995-06-30,clara.mendes@example.com,São Paulo,SP,PS5|Switch,Final Fantasy VII Remake|Celeste|Persona 5|Hollow Knight|Monster Hunter Rise
+8,Bruno Almeida,1992-12-10,bruno.almeida@example.com,Porto Alegre,RS,Xbox One|PS4,Gears 5|Death Stranding|Ghost of Tsushima|Sekiro|Horizon Zero Dawn
+9,Maria Oliveira,1990-11-05,maria.oliveiraexamplecom,Curitiba,PR,PS4|Switch,Zelda Breath of the Wild|Uncharted 4|Mario Kart 8|Animal Crossing|Overwatch
+10,Lucas Martins,1998-09-25,lucas.martins@example.com,Recife,PE,PS5|Xbox Series X,Demon's Souls|Yakuza Like a Dragon|Returnal|Resident Evil 3|Ghost of Tsushima
